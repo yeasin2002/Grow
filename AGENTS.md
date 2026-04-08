@@ -51,6 +51,9 @@ src/
 
 ## Routing Convention
 
+### Route Planning 
+in there `PROJECT-ROUTES.MD` we have covered all feature plans of this app routes. 
+
 Expo Router uses file-based routing in `src/app/`:
 
 - `index.tsx` - Home screen (route: `/`)
