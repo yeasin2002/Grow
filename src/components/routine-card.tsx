@@ -1,0 +1,51 @@
+import { Ionicons } from "@expo/vector-icons";
+import { Pressable, Text, View } from "react-native";
+import { withUniwind } from "uniwind";
+
+const StyledIonicons = withUniwind(Ionicons);
+
+interface RoutineCardProps {
+	title: string;
+	isExpanded: boolean;
+	onToggle: () => void;
+	children?: React.ReactNode;
+}
+
+export function RoutineCard({
+	title,
+	isExpanded,
+	onToggle,
+	children,
+}: RoutineCardProps) {
+	return (
+		<View className="mx-6 mb-4">
+			<Pressable
+				className="flex-row items-center justify-between py-3"
+				onPress={onToggle}
+			>
+				<View className="flex-row items-center">
+					<StyledIonicons
+						className="text-foreground mr-2"
+						name={isExpanded ? "chevron-down" : "chevron-forward"}
+						size={16}
+					/>
+					<Text className="text-lg font-semibold text-foreground">{title}</Text>
+				</View>
+				<View className="flex-row items-center">
+					<StyledIonicons
+						className="text-default-400 mr-3"
+						name="play-circle-outline"
+						size={20}
+					/>
+					<StyledIonicons
+						className="text-danger"
+						name="trash-outline"
+						size={20}
+					/>
+				</View>
+			</Pressable>
+
+			{isExpanded && children && <View className="ml-6">{children}</View>}
+		</View>
+	);
+}
