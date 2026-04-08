@@ -10,8 +10,8 @@
     "ios": "expo run:ios",
     "prebuild": "expo prebuild",
     "web": "expo start --web",
-    "check": "ultracite check",
-    "fix": "ultracite fix",
+    "check": "biome check ",
+    "fix": "biome check  --write",
     "check-types": "tsc --noEmit",
     "knip": "knip"
   },
@@ -82,7 +82,6 @@
     "eslint-plugin-unused-imports": "^4.4.1",
     "globals": "^17.4.0",
     "knip": "^5.86.0",
-    "prettier": "^3.8.1",
-    "ultracite": "^7.3.1"
+    "prettier": "^3.8.1"
   }
 }

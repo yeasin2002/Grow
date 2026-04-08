@@ -1,4 +1,5 @@
 <!-- Product -->
+
 # Product Overview
 
 Grow is a routine-based productivity and task management application that emphasizes daily discipline and habit formation over traditional task completion.
@@ -31,7 +32,6 @@ Plan → Routine → Task → Timer → Activity Tracking
 ## Unique Value
 
 Combines planning, execution, tracking, and reflection layers into a unified system that encourages disciplined behavior and long-term consistency.
-
 
 <!-- Structure -->
 
@@ -69,6 +69,7 @@ Reusable UI components used across multiple screens:
 - `theme-toggle.tsx` - Theme switcher component
 
 **Component Patterns**:
+
 - Use `cn()` from `heroui-native` for conditional class merging
 - Leverage `useSafeAreaInsets()` for proper spacing on notched devices
 - Prefer `Animated.createAnimatedComponent()` for animated wrappers
@@ -81,6 +82,7 @@ Global state management via React Context:
 - `app-theme-context.tsx` - Theme management (light/dark mode)
 
 **Context Patterns**:
+
 - Export both provider component and custom hook
 - Throw error if hook used outside provider
 - Use `useMemo` for context value to prevent unnecessary re-renders
@@ -93,6 +95,7 @@ Shared utility functions and configurations:
 - `env.ts` - Type-safe environment variable validation using t3-env + Zod
 
 **Utility Patterns**:
+
 - Keep utilities pure and side-effect free
 - Export typed interfaces for better IDE support
 - Use Zod schemas for runtime validation
@@ -104,6 +107,7 @@ Static resources organized by type:
 - `images/` - App icons, splash screens, logos, and image assets
 
 **Asset Conventions**:
+
 - Use `@2x` and `@3x` suffixes for high-DPI variants
 - Store platform-specific icons (Android/iOS) with descriptive names
 - Reference via `require()` or Expo's asset system
@@ -113,6 +117,7 @@ Static resources organized by type:
 ### Global Styles (`src/global.css`)
 
 Imports in order:
+
 1. TailwindCSS base
 2. Uniwind React Native integration
 3. HeroUI Native component styles
@@ -145,7 +150,6 @@ Imports in order:
 - Define prop interfaces for all components
 - Use Zod for runtime validation (env vars, API responses)
 - Leverage Expo Router's typed routes for navigation
-
 
 <!-- Tech -->
 
@@ -187,7 +191,6 @@ Imports in order:
 
 ## Development Tools
 
-- **Ultracite** - Unified linting and formatting via Oxlint + Oxfmt
 - **Lefthook** - Git hooks for pre-commit linting/formatting
 - **Knip** - Dead code and unused exports detection
 - **Biome** - Additional code quality tooling
@@ -223,7 +226,7 @@ pnpm prebuild         # Generate native projects
 - `app.json` - Expo configuration with typed routes and React Compiler experiments
 - `metro.config.js` - Metro bundler config with Reanimated and Uniwind integration
 - `tsconfig.json` - Strict TypeScript with path aliases (`@/*` → `./src/*`)
-- `biome.jsonc` - Biome configuration extending ultracite core
+- `biome.jsonc` - Biome configuration
 - `lefthook.yml` - Pre-commit hooks for oxlint and oxfmt
 - `.env` - Environment variables (validated via t3-env)
 
