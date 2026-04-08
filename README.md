@@ -1,6 +1,11 @@
-# expo-starter
+# Grow
+A Task and productivity Management Application
 
-A production-ready starter template for cross-platform mobile apps built with Expo. Targets iOS, Android, and web from a single codebase.
+This product is a **routine-based productivity and Plan management system** designed to help users focus on consistency, structured planning, and execution.
+
+Unlike traditional task managers, this app emphasizes **daily discipline and habit formation** through structured routines and tracking.
+
+
 
 ## Features
 
