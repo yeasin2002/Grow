@@ -28,7 +28,6 @@ Plan → Routine → Task → Timer → Activity Tracking
 - **TailwindCSS 4** + **Uniwind** — utility-first styling for React Native
 - **HeroUI Native** — component library with light/dark theming
 - **Reanimated 4** + **Gesture Handler** — animations and gestures
-- **Oxlint + Oxfmt** — fast linting and formatting via `ultracite`
 - **Lefthook** — pre-commit hooks for lint/format on staged files
 - **t3-env + Zod** — type-safe environment variables
 

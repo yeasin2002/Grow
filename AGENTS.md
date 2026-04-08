@@ -227,7 +227,7 @@ pnpm prebuild         # Generate native projects
 - `metro.config.js` - Metro bundler config with Reanimated and Uniwind integration
 - `tsconfig.json` - Strict TypeScript with path aliases (`@/*` → `./src/*`)
 - `biome.jsonc` - Biome configuration
-- `lefthook.yml` - Pre-commit hooks for oxlint and oxfmt
+- `lefthook.yml` - Pre-commit hooks 
 - `.env` - Environment variables (validated via t3-env)
 
 ## Key Conventions
