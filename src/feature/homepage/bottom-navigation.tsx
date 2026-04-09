@@ -1,4 +1,5 @@
 import type { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 import { Icons } from "@/lib";
 
@@ -16,7 +17,7 @@ interface BottomNavigationProps {
 
 export function BottomNavigation({
 	activeTab,
-	onTabChange,
+	onTabChange: _onTabChange,
 }: BottomNavigationProps) {
 	const navigationItems: NavigationItem[] = [
 		{ id: "home", label: "Home", icon: "home", isActive: true },
@@ -37,7 +38,8 @@ export function BottomNavigation({
 								? "bg-foreground"
 								: "bg-transparent"
 						}`}
-						onPress={() => onTabChange(item.id)}
+						// onPress={() => onTabChange(item.id)}
+						onPress={() => router.push("/activity")}
 					>
 						<Icons
 							className={
