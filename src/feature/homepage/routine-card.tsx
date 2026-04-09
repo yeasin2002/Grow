@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 
 interface RoutineCardProps {
@@ -28,14 +29,17 @@ export function RoutineCard({
 					/>
 					<Text className="text-lg font-semibold text-foreground">{title}</Text>
 				</View>
-				<View className="flex-row items-center ">
+				<Pressable
+					className="flex-row items-center "
+					onPress={() => router.push("/timer")}
+				>
 					<Ionicons
 						className="text-default-400 mr-3  rounded-full p-1 border border-[#C5C5C5]"
 						name="timer-outline"
 						size={20}
 					/>
 					<Ionicons className="text-danger" name="trash-outline" size={20} />
-				</View>
+				</Pressable>
 			</Pressable>
 
 			{isExpanded && children && <View className="ml-6">{children}</View>}

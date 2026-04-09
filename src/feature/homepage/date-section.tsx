@@ -15,7 +15,7 @@ export function DateSection({
 	onAddPress,
 }: DateSectionProps) {
 	return (
-		<View className="mx-6 mb-6">
+		<View className="mx-0 mb-6 bg-[#F9F9F9] rounded-xl py-2 px-2">
 			<View className="flex-row items-center justify-between mb-4">
 				<Text className="text-lg font-semibold text-foreground">{title}</Text>
 				{showAddButton && (
