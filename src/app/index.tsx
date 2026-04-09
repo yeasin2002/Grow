@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-import { BottomNavigation } from "@/components/bottom-navigation";
-import { Container } from "@/components/container";
-import { DateSection } from "@/components/date-section";
-import { GreetingHeader } from "@/components/greeting-header";
-import { ProgressSection } from "@/components/progress-section";
-import { RoutineCard } from "@/components/routine-card";
-import { TaskFilterTabs } from "@/components/task-filter-tabs";
-import { TaskItem } from "@/components/task-item";
-import { WeekCalendar } from "@/components/week-calendar";
+import { BottomNavigation } from "@/feature/homepage/bottom-navigation";
+import { Container } from "@/feature/homepage/container";
+import { DateSection } from "@/feature/homepage/date-section";
+import { GreetingHeader } from "@/feature/homepage/greeting-header";
+import { ProgressSection } from "@/feature/homepage/progress-section";
+import { RoutineCard } from "@/feature/homepage/routine-card";
+import { TaskFilterTabs } from "@/feature/homepage/task-filter-tabs";
+import { TaskItem } from "@/feature/homepage/task-item";
+import { WeekCalendar } from "@/feature/homepage/week-calendar";
 
 export default function HomePage() {
 	const [activeTab, setActiveTab] = useState<"todo" | "completed" | "pending">(
