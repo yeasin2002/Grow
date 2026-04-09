@@ -1,8 +1,5 @@
-import { Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
-import { withUniwind } from "uniwind";
-
-const StyledIonicons = withUniwind(Ionicons);
+import { Icons } from "@/lib";
 
 interface TaskItemProps {
 	title: string;
@@ -25,11 +22,7 @@ export function TaskItem({
 				</Text>
 				<Text className="text-sm text-default-400 mt-1">{timeRange}</Text>
 			</View>
-			<StyledIonicons
-				className="text-default-400"
-				name="chevron-up"
-				size={16}
-			/>
+			<Icons className="text-default-400" name="chevron-up" size={16} />
 		</View>
 	);
 }

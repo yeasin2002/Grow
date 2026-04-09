@@ -1,8 +1,5 @@
-import { Ionicons } from "@expo/vector-icons";
 import { Pressable, Text, View } from "react-native";
-import { withUniwind } from "uniwind";
-
-const StyledIonicons = withUniwind(Ionicons);
+import { Icons } from "@/lib";
 
 interface DateSectionProps {
 	title: string;
@@ -26,7 +23,7 @@ export function DateSection({
 						className="h-8 w-8 items-center justify-center rounded-full bg-foreground"
 						onPress={onAddPress}
 					>
-						<StyledIonicons className="text-background" name="add" size={16} />
+						<Icons className="text-background" name="add" size={16} />
 					</Pressable>
 				)}
 			</View>

@@ -1,8 +1,6 @@
-import { Ionicons } from "@expo/vector-icons";
-import { Text, View } from "react-native";
-import { withUniwind } from "uniwind";
-
-const StyledIonicons = withUniwind(Ionicons);
+import { router } from "expo-router";
+import { Pressable, Text, View } from "react-native";
+import { Icons } from "@/lib";
 
 interface GreetingHeaderProps {
 	name: string;
@@ -18,9 +16,13 @@ export function GreetingHeader({ name, message }: GreetingHeaderProps) {
 					{message}
 				</Text>
 			</View>
-			<View className="h-12 w-12 items-center justify-center rounded-full bg-foreground">
-				<StyledIonicons className="text-background" name="flame" size={24} />
-			</View>
+
+			<Pressable
+				onPress={() => router.push("/notifications")}
+				className="h-12 w-12 items-center justify-center rounded-2xl bg-foreground"
+			>
+				<Icons className="text-background" name="notifications" size={24} />
+			</Pressable>
 		</View>
 	);
 }

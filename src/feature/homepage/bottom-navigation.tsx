@@ -1,8 +1,6 @@
-import { Ionicons } from "@expo/vector-icons";
+import type { Ionicons } from "@expo/vector-icons";
 import { Pressable, Text, View } from "react-native";
-import { withUniwind } from "uniwind";
-
-const StyledIonicons = withUniwind(Ionicons);
+import { Icons } from "@/lib";
 
 interface NavigationItem {
 	id: string;
@@ -41,7 +39,7 @@ export function BottomNavigation({
 						}`}
 						onPress={() => onTabChange(item.id)}
 					>
-						<StyledIonicons
+						<Icons
 							className={
 								item.id === activeTab || item.isActive
 									? "text-background"

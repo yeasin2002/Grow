@@ -52,7 +52,7 @@ src/
 ## Routing Convention
 
 ### Route Planning 
-in there `PROJECT-ROUTES.MD` we have covered all feature plans of this app routes. 
+in there `PROJECT-ROUTES.MD` we have covered all feature plans of this app routes. But 
 
 Expo Router uses file-based routing in `src/app/`:
 
@@ -65,7 +65,8 @@ Expo Router uses file-based routing in `src/app/`:
 ## Component Architecture
 
 ### Page based components. 
-- all page specific components live in `src/feature`
+- all page specific components live in `src/feature`, make sure if there's only one component do not need to create another feature folders. 
+
 - Example: 
  - homepage 
   component path: `src/feature/homepage`
@@ -248,3 +249,25 @@ pnpm prebuild         # Generate native projects
 - **React Compiler**: Automatic memoization enabled - avoid manual `useMemo`/`useCallback` unless necessary
 - **Styling**: Use Tailwind utility classes via `className` prop
 - **Theme Support**: Light/dark themes managed via Uniwind and HeroUI
+
+
+## Best Practices & Tips
+
+
+### expo icon with tailwind
+ Not need to use like this, withUniwind with @expo/vector-icons, they already support className by default.
+    ```tsx
+    import { Ionicons } from "@expo/vector-icons"; 
+    import { withUniwind } from "uniwind";
+    const StyledIonicons = withUniwind(Ionicons);
+    ```
+ Instead import it from `src\lib\with-uniwind.tsx` and use it like this:
+ ```
+ import { StyledIonicons } from "@/lib";
+ 
+ <StyledIonicons className="text-background" name="flame" size={24} />
+ ```
+
+
+ ### StyleSheet use 
+ - Try to avoid StyleSheet.create/StyleSheet and instead of this use tailwindcss mostly with `className` prop.
