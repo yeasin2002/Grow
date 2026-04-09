@@ -1,44 +1,32 @@
+import {
+	IconCircleCheck,
+	IconClockHour1,
+	IconRotate2,
+} from "@tabler/icons-react-native";
+import { Tabs } from "heroui-native";
 import { useState } from "react";
-
 import { BottomNavigation } from "@/feature/homepage/bottom-navigation";
 import { Container } from "@/feature/homepage/container";
-import { DateSection } from "@/feature/homepage/date-section";
 import { GreetingHeader } from "@/feature/homepage/greeting-header";
 import { ProgressSection } from "@/feature/homepage/progress-section";
-import { RoutineCard } from "@/feature/homepage/routine-card";
-import { TaskFilterTabs } from "@/feature/homepage/task-filter-tabs";
-import { TaskItem } from "@/feature/homepage/task-item";
+import { TaskList } from "@/feature/homepage/task-list";
 import { WeekCalendar } from "@/feature/homepage/week-calendar";
 
 export default function HomePage() {
-	const [activeTab, setActiveTab] = useState<"todo" | "completed" | "pending">(
-		"todo",
-	);
+	const [activeTab, setActiveTab] = useState("todo");
 	const [activeNavTab, setActiveNavTab] = useState("home");
-	const [expandedRoutines, setExpandedRoutines] = useState<
-		Record<string, boolean>
-	>({
-		morning: true,
-		noon: false,
-		evening: false,
-		night: false,
-	});
 
-	const toggleRoutine = (routineId: string) => {
-		setExpandedRoutines((prev) => ({
-			...prev,
-			[routineId]: !prev[routineId],
-		}));
-	};
+	const StatusTabs = [
+		{ id: "todo", label: "To do", icon: IconRotate2 },
+		{ id: "completed", label: "Completed", icon: IconCircleCheck },
+		{ id: "pending", label: "Pending", icon: IconClockHour1 },
+	] as const;
 
 	return (
-		<Container className="pb-20">
+		<Container className="pb-20 bg-background">
 			{/* Greeting Header */}
 			<GreetingHeader name="Asif" message="Let's Make Progress Today !" />
-
-			{/* Week Calendar */}
 			<WeekCalendar selectedDate={10} />
-
 			{/* Progress Section */}
 			<ProgressSection
 				title="Today's Progress"
@@ -46,69 +34,42 @@ export default function HomePage() {
 				completed={0}
 				total={4}
 			/>
-
 			{/* Task Filter Tabs */}
-			<TaskFilterTabs activeTab={activeTab} onTabChange={setActiveTab} />
-
-			{/* Today's Routines - Wed, 10 */}
-			<DateSection title="Wed, 10">
-				<RoutineCard
-					title="Morning"
-					isExpanded={expandedRoutines.morning ?? false}
-					onToggle={() => toggleRoutine("morning")}
-				>
-					<TaskItem
-						title="English Literature"
-						timeRange="11:00 AM - 12:30 AM"
-					/>
-				</RoutineCard>
-
-				<RoutineCard
-					title="Noon"
-					isExpanded={expandedRoutines.noon ?? false}
-					onToggle={() => toggleRoutine("noon")}
-				>
-					<TaskItem
-						title="English Literature"
-						timeRange="11:00 AM - 12:30 AM"
-					/>
-				</RoutineCard>
-
-				<RoutineCard
-					title="Evening"
-					isExpanded={expandedRoutines.evening ?? false}
-					onToggle={() => toggleRoutine("evening")}
-				>
-					<TaskItem
-						title="English Literature"
-						timeRange="11:00 AM - 12:30 AM"
-					/>
-				</RoutineCard>
-
-				<RoutineCard
-					title="Night"
-					isExpanded={expandedRoutines.night ?? false}
-					onToggle={() => toggleRoutine("night")}
-				>
-					<TaskItem
-						title="English Literature"
-						timeRange="11:00 AM - 12:30 AM"
-					/>
-				</RoutineCard>
-			</DateSection>
-
-			{/* Future Routines - Thu, 11 - Sat, 13 */}
-			<DateSection
-				title="Thu, 11 - Sat, 13"
-				showAddButton={true}
-				onAddPress={() => {}}
+			<Tabs
+				value={activeTab}
+				onValueChange={setActiveTab}
+				className="p-1 rounded-full mx-4"
 			>
-				<RoutineCard
-					title="Linguistics"
-					isExpanded={false}
-					onToggle={() => {}}
-				/>
-			</DateSection>
+				<Tabs.List className="flex-row bg-[#E6E6E6]   rounded-full py-2 px-2 gap-0!">
+					{StatusTabs.map((task) => {
+						const isActive = activeTab === task.id;
+						return (
+							<Tabs.Trigger
+								key={task.id}
+								value={task.id}
+								className={`flex-row items-center px-4 py-2 rounded-full  ${
+									isActive ? "bg-black" : "bg-transparent"
+								}`}
+							>
+								<task.icon color={isActive ? "#fff" : "#000"} />
+								<Tabs.Label
+									className={`text-sm font-medium ml-1 ${isActive ? "text-white" : "text-gray-400"}`}
+								>
+									{task.label}
+								</Tabs.Label>
+							</Tabs.Trigger>
+						);
+					})}
+				</Tabs.List>
+
+				{StatusTabs.map((task) => {
+					return (
+						<Tabs.Content key={task.id} value={task.id} className="mt-6">
+							<TaskList />
+						</Tabs.Content>
+					);
+				})}
+			</Tabs>
 
 			{/* Bottom Navigation */}
 			<BottomNavigation

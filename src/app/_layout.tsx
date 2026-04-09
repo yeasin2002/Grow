@@ -6,33 +6,35 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 import { AppThemeProvider } from "@/contexts/app-theme-context";
 
 export const unstable_settings = {
-  initialRouteName: "index",
+	initialRouteName: "index",
 };
 
 export default function Layout() {
-  return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <KeyboardProvider>
-        <AppThemeProvider>
-          <HeroUINativeProvider config={{ devInfo: { stylingPrinciples: false } }}>
-            <StackLayout />
-          </HeroUINativeProvider>
-        </AppThemeProvider>
-      </KeyboardProvider>
-    </GestureHandlerRootView>
-  );
+	return (
+		<GestureHandlerRootView style={{ flex: 1 }}>
+			<KeyboardProvider>
+				<AppThemeProvider>
+					<HeroUINativeProvider
+						config={{ devInfo: { stylingPrinciples: false } }}
+					>
+						<StackLayout />
+					</HeroUINativeProvider>
+				</AppThemeProvider>
+			</KeyboardProvider>
+		</GestureHandlerRootView>
+	);
 }
 
 function StackLayout() {
-  return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        statusBarStyle: "dark",
-        statusBarTranslucent: true,
-      }}
-    >
-      <Stack.Screen name="index" />
-    </Stack>
-  );
+	return (
+		<Stack
+			screenOptions={{
+				headerShown: false,
+				statusBarStyle: "dark",
+				statusBarTranslucent: true,
+			}}
+		>
+			<Stack.Screen name="index" />
+		</Stack>
+	);
 }

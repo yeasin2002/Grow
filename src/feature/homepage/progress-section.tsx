@@ -16,7 +16,7 @@ export function ProgressSection({
 	const progressPercentage = (completed / total) * 100;
 
 	return (
-		<View className="mx-6 mb-6 rounded-2xl bg-content1 p-4">
+		<View className="mx-4 mb-6 bg-content1 p-4 bg-[#F4FAF6] rounded-2xl!">
 			<Text className="text-lg font-semibold text-foreground mb-1">
 				{title}
 			</Text>

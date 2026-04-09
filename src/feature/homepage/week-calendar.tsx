@@ -15,7 +15,7 @@ export function WeekCalendar({ selectedDate = 10 }: WeekCalendarProps) {
 	];
 
 	return (
-		<View className="px-6 mb-6">
+		<View className="px-6 mb-6 bg-[#F9F9F9] rounded-2xl mx-4 py-2">
 			<View className="flex-row justify-between">
 				{weekDays.map((item) => (
 					<View key={item.date} className="items-center">
