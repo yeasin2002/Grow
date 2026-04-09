@@ -22,7 +22,9 @@ export default function NotFoundScreen() {
 							The page you're looking for doesn't exist.
 						</Text>
 						<Link asChild href="/">
-							<Button size="sm">Go Home</Button>
+							<Button size="sm">
+								<Text>Go Home</Text>
+							</Button>
 						</Link>
 					</Surface>
 				</View>

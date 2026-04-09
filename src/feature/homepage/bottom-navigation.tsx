@@ -39,7 +39,12 @@ export function BottomNavigation({
 								: "bg-transparent"
 						}`}
 						// onPress={() => onTabChange(item.id)}
-						onPress={() => router.push("/activity")}
+						onPress={() =>
+							router.push({
+								pathname: "/notes/[id]",
+								params: { id: "asdf" },
+							})
+						}
 					>
 						<Icons
 							className={
