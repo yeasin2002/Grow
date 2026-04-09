@@ -3,7 +3,7 @@ import {
 	IconClockHour1,
 	IconRotate2,
 } from "@tabler/icons-react-native";
-import { Tabs } from "heroui-native";
+import { Button, Tabs, useToast } from "heroui-native";
 import { useState } from "react";
 import { BottomNavigation } from "@/feature/homepage/bottom-navigation";
 import { Container } from "@/feature/homepage/container";
@@ -22,6 +22,10 @@ export default function HomePage() {
 		{ id: "pending", label: "Pending", icon: IconClockHour1 },
 	] as const;
 
+	const { toast } = useToast();
+	const demoClick = () => {
+		toast.show("This is a toast message");
+	};
 	return (
 		<Container className="pb-20 bg-background">
 			{/* Greeting Header */}
@@ -34,6 +38,8 @@ export default function HomePage() {
 				completed={0}
 				total={4}
 			/>
+
+			<Button onPress={demoClick}>Clicked</Button>
 			{/* Task Filter Tabs */}
 			<Tabs
 				value={activeTab}
