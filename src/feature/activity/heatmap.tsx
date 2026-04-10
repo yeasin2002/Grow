@@ -1,4 +1,5 @@
 import { Text, useWindowDimensions, View } from "react-native";
+import { HeatmapGraph, type HeatmapGraphRow } from "@/components/shared";
 
 const DAY_LABELS = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"] as const;
 
@@ -43,17 +44,19 @@ const COLUMN_KEYS = [
 	"w14",
 ] as const;
 
-const HEATMAP_ROWS = DAY_LABELS.map((day, rowIndex) => {
-	const levels = HEATMAP_LEVELS[rowIndex] ?? HEATMAP_LEVELS[0];
+const HEATMAP_ROWS: readonly HeatmapGraphRow[] = DAY_LABELS.map(
+	(day, rowIndex) => {
+		const levels = HEATMAP_LEVELS[rowIndex] ?? HEATMAP_LEVELS[0];
 
-	return {
-		day,
-		cells: COLUMN_KEYS.map((columnKey, columnIndex) => ({
-			id: `${day}-${columnKey}`,
-			level: levels[columnIndex] ?? 0,
-		})),
-	};
-});
+		return {
+			id: day,
+			cells: COLUMN_KEYS.map((columnKey, columnIndex) => ({
+				id: `${day}-${columnKey}`,
+				level: levels[columnIndex] ?? 0,
+			})),
+		};
+	},
+);
 
 export function Heatmap() {
 	const { width } = useWindowDimensions();
@@ -93,23 +96,14 @@ export function Heatmap() {
 					))}
 				</View>
 
-				<View className="gap-1">
-					{HEATMAP_ROWS.map((row) => (
-						<View key={row.day} className="flex-row gap-1">
-							{row.cells.map((cell) => (
-								<View
-									key={cell.id}
-									className={LEVEL_STYLES[cell.level]}
-									style={{
-										width: cellSize,
-										height: cellSize,
-										borderRadius: cellRadius,
-									}}
-								/>
-							))}
-						</View>
-					))}
-				</View>
+				<HeatmapGraph
+					cellRadius={cellRadius}
+					cellSize={cellSize}
+					columnGap={4}
+					levelClassNames={LEVEL_STYLES}
+					rowGap={4}
+					rows={HEATMAP_ROWS}
+				/>
 			</View>
 
 			<View className="mt-5 border-t border-[#ebebeb] pt-5">
