@@ -16,13 +16,17 @@ export function TaskItem({
 		<View className="flex-row items-center justify-between bg-content1 rounded-xl p-4 mb-3">
 			<View className="flex-1">
 				<Text
-					className={`text-base font-medium ${isCompleted ? "text-default-400 line-through" : "text-foreground"}`}
+					className={`text-base font-medium ${isCompleted ? "text-black line-through" : "text-black"}`}
 				>
 					{title}
 				</Text>
-				<Text className="text-sm text-default-400 mt-1">{timeRange}</Text>
+				<Text className="text-sm text-gray-500 mt-1">{timeRange}</Text>
 			</View>
-			<Icons className="text-default-400" name="chevron-up" size={16} />
+			<Icons
+				className="text-default-400 fill-black"
+				name="chevron-up"
+				size={16}
+			/>
 		</View>
 	);
 }

@@ -27,14 +27,14 @@ export function RoutineCard({
 						name={isExpanded ? "chevron-down" : "chevron-forward"}
 						size={16}
 					/>
-					<Text className="text-lg font-semibold text-foreground">{title}</Text>
+					<Text className="text-lg font-semibold text-black">{title}</Text>
 				</View>
 				<Pressable
 					className="flex-row items-center "
 					onPress={() => router.push("/timer")}
 				>
 					<Ionicons
-						className="text-default-400 mr-3  rounded-full p-1 border border-[#C5C5C5]"
+						className="text-black mr-3  rounded-full p-1 border border-[#C5C5C5]"
 						name="timer-outline"
 						size={20}
 					/>

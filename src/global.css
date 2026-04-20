@@ -13,7 +13,3 @@
 		--background: oklch(0.9581 0 0);
 	}
 }
-
-@theme inline {
-	--secondary: oklch(0.9821 0 0);
-}
