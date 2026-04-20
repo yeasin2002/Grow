@@ -186,7 +186,8 @@ Imports in order:
 
 - **React Native Reanimated 4** - High-performance animations
 - **React Native Gesture Handler** - Native gesture system
-- **React Native Worklets** - JavaScript worklets for animations
+- **React Native Worklets** - JavaScript worklets for animations 
+- **react-native-ease** - Easing functions for animations (use this one mostly when possible mostly on simple animations, do not use it for gesture-driven and shared element animation)
 
 ## Navigation & Layout
 
