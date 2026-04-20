@@ -1,3 +1,4 @@
+import { cn } from "heroui-native";
 import { Text, View } from "react-native";
 
 interface WeekCalendarProps {
@@ -15,21 +16,30 @@ export function WeekCalendar({ selectedDate = 10 }: WeekCalendarProps) {
 	];
 
 	return (
-		<View className="px-6 mb-6 bg-[#F9F9F9] rounded-2xl mx-4 py-2">
-			<View className="flex-row justify-between">
+		<View
+			className="px-6 mb-6 bg-[#F9F9F9] rounded-2xl mx-4 "
+			style={{ boxShadow: "0px 5px 8px 0px #0000000D" }}
+		>
+			<View className="flex-row justify-between text-black">
 				{weekDays.map((item) => (
-					<View key={item.date} className="items-center">
-						<Text className="text-sm text-default-400 mb-2">{item.day}</Text>
+					<View
+						key={item.date}
+						className={cn(
+							"items-center py-1 my-2",
+							item.date === selectedDate
+								? "bg-[#F2F2F2] border border-[#EBEBEB] rounded-lg"
+								: "bg-transparent",
+						)}
+					>
+						<Text className="text-sm text-default-400 ">{item.day}</Text>
 						<View
-							className={`h-10 w-10 items-center justify-center rounded-full ${
-								item.date === selectedDate ? "bg-foreground" : "bg-transparent"
-							}`}
+							className={`h-7 w-10 items-center justify-center rounded-full `}
 						>
 							<Text
 								className={`text-base font-medium ${
 									item.date === selectedDate
-										? "text-background"
-										: "text-foreground"
+										? "text-default-400"
+										: "text-default-100"
 								}`}
 							>
 								{item.date}

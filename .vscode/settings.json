@@ -4,6 +4,9 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "emmet.showExpandedAbbreviation": "never",
+  "files.associations": {
+    ".css": "tailwindcss"
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "explicit",
@@ -11,12 +14,6 @@
     "source.organizeImports.biome": "explicit"
   },
   "[css]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[graphql]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[html]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[javascript]": {
@@ -37,21 +34,13 @@
   "[mdx]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "[svelte]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "[vue]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
+  
   "cSpell.words": [
     "uniwind"
   ]
