@@ -21,78 +21,10 @@ type TimerStatCardProps = {
 	value: string;
 };
 
-function TimerStatCard({ label, value }: TimerStatCardProps) {
-	return (
-		<View className="flex-1 items-center justify-center rounded-3xl bg-white px-5 py-4">
-			<Text className="text-[16px] font-medium text-[#9d9d9b]">{label}</Text>
-			<Text className="mt-2 text-[22px] font-bold tracking-[-0.5px] text-[#182033]">
-				{value}
-			</Text>
-		</View>
-	);
-}
-
 type TimerProgressRingProps = {
 	progress: number;
 	size: number;
 };
-
-function TimerProgressRing({ progress, size }: TimerProgressRingProps) {
-	const strokeWidth = 16;
-	const radius = (size - strokeWidth) / 2;
-	const circumference = 2 * Math.PI * radius;
-	const dashOffset = circumference * (1 - progress);
-	const innerSize = size - 42;
-
-	return (
-		<SafeAreaView edges={["top"]}>
-			<View
-				className="items-center justify-center"
-				style={{ width: size, height: size }}
-			>
-				<Svg width={size} height={size}>
-					<Circle
-						cx={size / 2}
-						cy={size / 2}
-						r={radius}
-						stroke="#dedede"
-						strokeWidth={strokeWidth}
-						fill="none"
-					/>
-					<Circle
-						cx={size / 2}
-						cy={size / 2}
-						r={radius}
-						stroke="#050505"
-						strokeWidth={strokeWidth}
-						strokeDasharray={`${circumference} ${circumference}`}
-						strokeDashoffset={dashOffset}
-						strokeLinecap="round"
-						fill="none"
-						originX={size / 2}
-						originY={size / 2}
-						rotation={-90}
-					/>
-				</Svg>
-				<View
-					className="absolute items-center justify-center rounded-full border border-[#ededeb] bg-[#f7f7f6]"
-					style={{
-						width: innerSize,
-						height: innerSize,
-						borderRadius: innerSize / 2,
-					}}
-				>
-					<Text className="text-[54px] font-bold tracking-[-2px] text-black">
-						{TIMER_LABEL}
-					</Text>
-					<Text className="mt-1.5 text-[18px] font-medium tracking-[-0.3px] text-[#171717]">
-						Focus Time
-					</Text>
-				</View>
-			</View>
-		</SafeAreaView>
-	);
-}
 
 export default function TimerScreen() {
 	const insets = useSafeAreaInsets();
@@ -172,5 +104,73 @@ export default function TimerScreen() {
 				</View>
 			</ScrollView>
 		</View>
+	);
+}
+
+function TimerStatCard({ label, value }: TimerStatCardProps) {
+	return (
+		<View className="flex-1 items-center justify-center rounded-3xl bg-white px-5 py-4">
+			<Text className="text-[16px] font-medium text-[#9d9d9b]">{label}</Text>
+			<Text className="mt-2 text-[22px] font-bold tracking-[-0.5px] text-[#182033]">
+				{value}
+			</Text>
+		</View>
+	);
+}
+
+function TimerProgressRing({ progress, size }: TimerProgressRingProps) {
+	const strokeWidth = 16;
+	const radius = (size - strokeWidth) / 2;
+	const circumference = 2 * Math.PI * radius;
+	const dashOffset = circumference * (1 - progress);
+	const innerSize = size - 42;
+
+	return (
+		<SafeAreaView edges={["top", "bottom"]}>
+			<View
+				className="items-center justify-center"
+				style={{ width: size, height: size }}
+			>
+				<Svg width={size} height={size}>
+					<Circle
+						cx={size / 2}
+						cy={size / 2}
+						r={radius}
+						stroke="#dedede"
+						strokeWidth={strokeWidth}
+						fill="none"
+					/>
+					<Circle
+						cx={size / 2}
+						cy={size / 2}
+						r={radius}
+						stroke="#050505"
+						strokeWidth={strokeWidth}
+						strokeDasharray={`${circumference} ${circumference}`}
+						strokeDashoffset={dashOffset}
+						strokeLinecap="round"
+						fill="none"
+						originX={size / 2}
+						originY={size / 2}
+						rotation={-90}
+					/>
+				</Svg>
+				<View
+					className="absolute items-center justify-center rounded-full border border-[#ededeb] bg-[#f7f7f6]"
+					style={{
+						width: innerSize,
+						height: innerSize,
+						borderRadius: innerSize / 2,
+					}}
+				>
+					<Text className="text-[54px] font-bold tracking-[-2px] text-black">
+						{TIMER_LABEL}
+					</Text>
+					<Text className="mt-1.5 text-[18px] font-medium tracking-[-0.3px] text-[#171717]">
+						Focus Time
+					</Text>
+				</View>
+			</View>
+		</SafeAreaView>
 	);
 }

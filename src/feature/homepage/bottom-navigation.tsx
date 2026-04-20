@@ -87,7 +87,7 @@ export function BottomNavigation() {
 
 	return (
 		<View
-			className="px-4 pt-2"
+			className="px-4"
 			style={{ paddingBottom: Math.max(insets.bottom, 16) }}
 		>
 			<View className="flex-row items-center gap-4">
