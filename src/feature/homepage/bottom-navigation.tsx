@@ -1,73 +1,52 @@
-import type { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { Text, View } from "react-native";
+
 import { Icons } from "@/lib";
 
-interface NavigationItem {
-	id: string;
-	label: string;
-	icon: keyof typeof Ionicons.glyphMap;
-	isActive?: boolean;
-}
+const softShadow = {
+	shadowColor: "#000000",
+	shadowOffset: { width: 0, height: 10 },
+	shadowOpacity: 0.08,
+	shadowRadius: 24,
+	elevation: 8,
+} as const;
 
-interface BottomNavigationProps {
-	activeTab: string;
-	onTabChange: (tabId: string) => void;
-}
-
-export function BottomNavigation({
-	activeTab,
-	onTabChange: _onTabChange,
-}: BottomNavigationProps) {
-	const navigationItems: NavigationItem[] = [
-		{ id: "home", label: "Home", icon: "home", isActive: true },
-		{ id: "calendar", label: "", icon: "calendar-outline" },
-		{ id: "notes", label: "", icon: "document-text-outline" },
-		{ id: "profile", label: "", icon: "person-outline" },
-		{ id: "menu", label: "", icon: "grid", isActive: false },
-	];
-
+export function BottomNavigation() {
 	return (
-		<View className="absolute bottom-0 left-0 right-0 bg-background border-t border-default-200">
-			<View className="flex-row items-center justify-around py-3 px-6">
-				{navigationItems.map((item) => (
-					<Pressable
-						key={item.id}
-						className={`flex-row items-center px-4 py-2 rounded-full ${
-							item.id === activeTab || item.isActive
-								? "bg-foreground"
-								: "bg-transparent"
-						}`}
-						// onPress={() => onTabChange(item.id)}
-						onPress={() =>
-							router.push({
-								pathname: "/notes/[id]",
-								params: { id: "asdf" },
-							})
-						}
-					>
-						<Icons
-							className={
-								item.id === activeTab || item.isActive
-									? "text-background"
-									: "text-default-400"
-							}
-							name={item.icon}
-							size={20}
-						/>
-						{item.label && (
-							<Text
-								className={`ml-2 text-sm font-medium ${
-									item.id === activeTab || item.isActive
-										? "text-background"
-										: "text-default-400"
-								}`}
-							>
-								{item.label}
+		<View className="mt-auto px-4 pb-4 ">
+			<View className="flex-row items-center gap-4">
+				<View
+					className="flex-1 rounded-full bg-[#F6F6F4] p-1"
+					style={softShadow}
+				>
+					<View className="flex-row items-center">
+						<View className="flex-row items-center rounded-full bg-[#2E2E2E] px-5 py-3">
+							<Icons className="text-white" name="home" size={16} />
+							<Text className="ml-2 text-base font-medium text-white">
+								Home
 							</Text>
-						)}
-					</Pressable>
-				))}
+						</View>
+
+						<View className="ml-auto flex-row items-center gap-8 px-4">
+							<Icons
+								className="text-[#9B9B9B]"
+								name="document-text-outline"
+								size={18}
+							/>
+							<Icons
+								className="text-[#9B9B9B]"
+								name="calendar-outline"
+								size={18}
+							/>
+						</View>
+					</View>
+				</View>
+
+				<View
+					className="size-14 items-center justify-center rounded-full bg-[#2E2E2E]"
+					style={softShadow}
+				>
+					<Icons className="text-white" name="grid" size={20} />
+				</View>
 			</View>
 		</View>
 	);
