@@ -1,5 +1,4 @@
-import { View } from "react-native";
-import { BottomNavigation } from "@/feature/homepage/bottom-navigation";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Container } from "@/feature/homepage/container";
 import { GreetingHeader } from "@/feature/homepage/greeting-header";
 import { ProgressSection } from "@/feature/homepage/progress-section";
@@ -8,19 +7,13 @@ import { WeekCalendar } from "@/feature/homepage/week-calendar";
 
 export default function HomePage() {
 	return (
-		<View className="flex-1 bg-background">
+		<SafeAreaView edges={["top", "bottom"]}>
 			<Container className="bg-background">
-				<View className="pb-32">
-					<GreetingHeader name="Yeasin" message="Let's Make Progress Today !" />
-					<WeekCalendar selectedDate={10} />
-					<ProgressSection />
-					<TaskFilterTabs />
-				</View>
+				<GreetingHeader name="Yeasin" message="Let's Make Progress Today !" />
+				<WeekCalendar selectedDate={10} />
+				<ProgressSection />
+				<TaskFilterTabs />
 			</Container>
-
-			<View className="absolute bottom-5 left-0 right-0">
-				<BottomNavigation />
-			</View>
-		</View>
+		</SafeAreaView>
 	);
 }

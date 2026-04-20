@@ -1,13 +1,13 @@
 {
   "expo": {
-    "scheme": "expo-starter",
+    "scheme": "grow",
     "userInterfaceStyle": "automatic",
     "orientation": "default",
     "web": {
       "bundler": "metro"
     },
-    "name": "expo-starter",
-    "slug": "expo-starter",
+    "name": "Grow",
+    "slug": "Grow",
     "plugins": ["expo-font"],
     "experiments": {
       "typedRoutes": true,
