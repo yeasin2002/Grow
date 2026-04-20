@@ -87,12 +87,13 @@ export function BottomNavigation() {
 
 	return (
 		<View
-			className="px-4"
-			style={{ paddingBottom: Math.max(insets.bottom, 16) }}
+			className="px-3.5"
+			style={{ paddingBottom: Math.max(insets.bottom, 14) }}
 		>
-			<View className="flex-row items-center gap-4">
+			<View className="flex-row items-center gap-3.5">
+				{/* left side */}
 				<View
-					className="flex-1 flex-row items-center justify-between rounded-full bg-[#F6F6F4] p-1.5"
+					className="flex-1 flex-row items-center justify-between rounded-full bg-[#F6F6F4]  p-1 max-w-[70%]"
 					style={softShadow}
 				>
 					{NAVIGATION_ITEMS.map((item) => {
@@ -103,8 +104,8 @@ export function BottomNavigation() {
 								key={item.label}
 								layout={itemTransition}
 								className={cn(
-									"h-14 flex-row items-center justify-center overflow-hidden",
-									isActive ? "rounded-full bg-[#2E2E2E] px-5" : "w-14",
+									"h-12 flex-row items-center justify-center overflow-hidden",
+									isActive ? "rounded-full bg-[#2E2E2E] px-4" : "w-12",
 								)}
 								onPress={() => router.navigate(item.route)}
 								style={isActive ? softShadow : undefined}
@@ -119,7 +120,7 @@ export function BottomNavigation() {
 									<AnimatedText
 										entering={FadeIn.duration(120)}
 										exiting={FadeOut.duration(90)}
-										className="ml-2 text-[17px] font-medium text-white"
+										className="ml-1.5 text-[15px] font-medium text-white"
 									>
 										{item.label}
 									</AnimatedText>
@@ -129,9 +130,10 @@ export function BottomNavigation() {
 					})}
 				</View>
 
-				<View className="relative w-14 items-center self-end">
+				{/* right side */}
+				<View className="relative w-12 items-center self-end">
 					<AnimatedView
-						className="absolute bottom-16 w-14 rounded-full bg-[#2E2E2E] px-2 py-3"
+						className="absolute bottom-14 w-12 rounded-full bg-[#2E2E2E] px-1.5 py-2"
 						pointerEvents={isActionMenuOpen ? "auto" : "none"}
 						style={[softShadow, actionMenuStyle]}
 					>
@@ -139,8 +141,8 @@ export function BottomNavigation() {
 							<Pressable
 								key={item.label}
 								className={cn(
-									"h-10 items-center justify-center rounded-full",
-									index !== ACTION_NAVIGATION_ITEMS.length - 1 && "mb-2",
+									"h-9 items-center justify-center rounded-full",
+									index !== ACTION_NAVIGATION_ITEMS.length - 1 && "mb-1.5",
 								)}
 								onPress={() => handleActionPress(item.route)}
 							>
@@ -150,7 +152,7 @@ export function BottomNavigation() {
 					</AnimatedView>
 
 					<AnimatedPressable
-						className="size-14 items-center justify-center rounded-full bg-[#2E2E2E]"
+						className="size-12 items-center justify-center rounded-full bg-[#2E2E2E]"
 						onPress={toggleActionMenu}
 						style={[softShadow, mainActionButtonStyle]}
 					>

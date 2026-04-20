@@ -189,6 +189,14 @@ Imports in order:
 - **React Native Worklets** - JavaScript worklets for animations 
 - **react-native-ease** - Easing functions for animations (use this one mostly when possible mostly on simple animations, do not use it for gesture-driven and shared element animation)
 
+Rules: 
+- Something bouncing, fading, sliding on a button press? → react-native-ease
+- Gesture-driven pan/pinch/swipe animations? → Reanimated + Gesture Handler
+- Shared element transitions between screens? → Reanimated 4
+- CPU-heavy background work without blocking the UI? → Worklets
+
+For more to know about the animation use check @docs/animation-libraries.md (only when needed)
+
 ## Navigation & Layout
 
 - **React Navigation** - Drawer and navigation elements
@@ -252,22 +260,27 @@ pnpm prebuild         # Generate native projects
 - **Theme Support**: Light/dark themes managed via Uniwind and HeroUI
 
 
+
+<!-- Rules  -->
+
 ## Best Practices & Tips
 
 
 ### expo icon with tailwind
  Not need to use like this, withUniwind with @expo/vector-icons, they already support className by default.
-    ```tsx
+
+```tsx
     import { Ionicons } from "@expo/vector-icons"; 
     import { withUniwind } from "uniwind";
     const StyledIonicons = withUniwind(Ionicons);
-    ```
+```
+
  Instead import it from `src\lib\with-uniwind.tsx` and use it like this:
  ```
- import { StyledIonicons } from "@/lib";
+import { Icons } from "@/lib";
  
- <StyledIonicons className="text-background" name="flame" size={24} />
- ```
+ <Icons className="text-background" name="flame" size={24} />
+```
 
 
  ### StyleSheet use 
