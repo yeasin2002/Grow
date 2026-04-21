@@ -5,6 +5,7 @@ pre-commit:
   parallel: true
   jobs:
     - name: biome
-      run: pnpm fix {staged_files}
+      glob: "src/**/*.{ts,tsx,css}"
+      run: pnpm exec biome check --write --no-errors-on-unmatched {staged_files}
       stage_fixed: true
     

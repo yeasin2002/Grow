@@ -184,18 +184,88 @@ Imports in order:
 
 ## Animation & Gestures
 
+### Available Animation Libraries
 - **React Native Reanimated 4** - High-performance animations
 - **React Native Gesture Handler** - Native gesture system
-- **React Native Worklets** - JavaScript worklets for animations 
-- **react-native-ease** - Easing functions for animations (use this one mostly when possible mostly on simple animations, do not use it for gesture-driven and shared element animation)
+- **react-native-ease** - Easing functions for animations 
 
-Rules: 
+Rules to use animation libraries: 
 - Something bouncing, fading, sliding on a button press? → react-native-ease
 - Gesture-driven pan/pinch/swipe animations? → Reanimated + Gesture Handler
 - Shared element transitions between screens? → Reanimated 4
-- CPU-heavy background work without blocking the UI? → Worklets
 
-For more to know about the animation use check @docs/animation-libraries.md (only when needed)
+### Details in table
+
+| Feature | react-native-ease | Reanimated 4 | Gesture Handler |  |
+|---|---|---|---|---|
+| **Purpose** | Declarative UI animations | Complex animations on UI thread | Native gesture input | 
+| **Complexity** | ⭐ Very simple | ⭐⭐⭐ Complex | ⭐⭐ Moderate | 
+| **Performance** | 🟢 Native APIs, zero JS | 🟢 UI thread via worklets | 🟢 Native thread | 
+| **Bundle Impact** | 🟢 Minimal | 🔴 Significant (C++ runtime) | 🟡 Moderate | 
+| **Gesture-driven** | ❌ No | ✅ Yes (with RNGH) | ✅ Yes | 
+| **Layout animations** | ❌ No | ✅ Yes | ❌ No | 
+| **Shared element** | ❌ No | ✅ Yes (v4.2+) | ❌ No | 
+| **Sensor/Keyboard** | ❌ No | ✅ Yes | ❌ No | 
+| **Spring physics** | ✅ Yes | ✅ Yes | ❌ No | 
+| **New Arch required** | ✅ Yes | ✅ Yes | ✅ Yes (v3) | 
+| **Babel plugin** | ❌ No | via worklets | ❌ No |
+| **Direct usage in Grow** | ✅ Default choice | Complex interactions | With Reanimated |
+
+
+### When to Use Which
+
+### Use **react-native-ease** when:
+- You need a fade, slide, scale, or color animation triggered by a state change
+- The animation is not driven by gesture position
+- You want clean, minimal code with no performance overhead
+- Examples: modal appear/disappear, card expand, button press, tab transition, toast notifications
+
+```typescript
+// ✅ Perfect for react-native-ease
+<EaseView
+  animate={{ scale: isPressed ? 0.95 : 1, opacity: isPressed ? 0.8 : 1 }}
+  transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+>
+  <Text>Press Me</Text>
+</EaseView>
+```
+
+### Use **Reanimated 4** when:
+- The animation values depend on gesture position (drag distance, velocity)
+- You need layout animations (enter/exit animations for components)
+- You need shared element transitions between screens
+- You're animating something based on scroll position
+- You need `useAnimatedStyle` to compute style on the UI thread
+
+```typescript
+// ✅ Perfect for Reanimated
+const { useSharedValue, useAnimatedStyle, withSpring } = require('react-native-reanimated');
+
+const offset = useSharedValue(0);
+const style = useAnimatedStyle(() => ({
+  transform: [{ translateX: offset.value }],
+}));
+```
+
+### Use **Gesture Handler** when:
+- You need pan, pinch, rotation, fling, or long-press gestures
+- You need gesture composing (simultaneous or exclusive)
+- Always pair with Reanimated for the animation itself
+
+```typescript
+// ✅ Always use Gesture Handler with Reanimated for gesture-driven animation
+const pan = Gesture.Pan()
+  .onUpdate((e) => { x.value = e.translationX; })
+  .onEnd(() => { x.value = withSpring(0); });
+```
+
+### Use **react-native-worklets** when:
+- You are consuming it indirectly through Reanimated (most common case)
+- You need to write a custom function tagged with `'worklet';`
+- You're building a library/utility that must run on the UI thread
+- Rare: offloading non-animation CPU intensive tasks to a background Hermes runtime
+
+
 
 ## Navigation & Layout
 
