@@ -26,6 +26,11 @@ const softShadow = {
 	elevation: 8,
 } as const;
 
+const activeItemShadow = {
+	boxShadow:
+		"-2px 4px 5px 0px rgba(181, 181, 181, 0.25) inset, 2px -4px 5px 0px rgba(181, 181, 181, 0.25) inset",
+} as const;
+
 const itemTransition = LinearTransition.duration(180).easing(
 	Easing.out(Easing.cubic),
 );
@@ -108,7 +113,7 @@ export function BottomNavigation() {
 									isActive ? "rounded-full bg-[#2E2E2E] px-4" : "w-12",
 								)}
 								onPress={() => router.navigate(item.route)}
-								style={isActive ? softShadow : undefined}
+								style={isActive ? activeItemShadow : undefined}
 							>
 								<Icons
 									className={isActive ? "text-white" : "text-[#9B9B9B]"}

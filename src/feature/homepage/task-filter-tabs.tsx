@@ -29,7 +29,7 @@ export const TaskFilterTabs = () => {
 						<Tabs.Trigger
 							key={task.id}
 							value={task.id}
-							className={`flex-row items-center px-4 py-2 rounded-full  ${
+							className={`flex-row items-center px-2 py-2 rounded-full  ${
 								isActive ? "bg-black" : "bg-transparent"
 							}`}
 						>
