@@ -1,4 +1,4 @@
-export { BottomNavigation } from "./bottom-navigation";
+export { BottomNavigation } from "../../components/shared/bottom-navigation";
 export { Container } from "./container";
 export { DateSection } from "./date-section";
 export { GreetingHeader } from "./greeting-header";
