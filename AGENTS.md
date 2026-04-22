@@ -314,7 +314,7 @@ pnpm prebuild         # Generate native projects
 
 ## Configuration Files
 
-- `app.json` - Expo configuration with typed routes and React Compiler experiments
+- `app.config.ts` - Expo configuration with typed routes and React Compiler experiments
 - `metro.config.js` - Metro bundler config with Reanimated and Uniwind integration
 - `tsconfig.json` - Strict TypeScript with path aliases (`@/*` → `./src/*`)
 - `biome.jsonc` - Biome configuration
