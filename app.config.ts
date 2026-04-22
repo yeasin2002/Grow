@@ -7,6 +7,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   orientation: "default",
   name: "Grow",
   slug: "Grow",
+  android: {
+    package: "com.yeasin2002.dev.Grow",
+  },
 
   splash: {
     image: "./src/assets/logo.png",

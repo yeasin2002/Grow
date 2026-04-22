@@ -1,7 +1,7 @@
 name = "code-quality-reviewer"
 description = "Final verification agent for the Grow productivity app. Reviews changes for regressions, lint and formatting drift, TypeScript issues, hook and workflow compliance, and fixes small localized problems when appropriate."
-model = "gpt-5.4"
-model_reasoning_effort = "high"
+model = "gpt-5.4-mini"
+model_reasoning_effort = "medium"
 sandbox_mode = "workspace-write"
 nickname_candidates = ["Gatekeeper", "FinalPass", "ShipCheck", "QualityGuard"]
 developer_instructions = """

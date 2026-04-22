@@ -1,7 +1,7 @@
 name = "api_engineer"
 description = "Owns the typed API layer inside `src/api/` for the Grow productivity app. Create or update query files, React Query hooks, cache keys, and API documentation without touching UI routes or components."
-model = "gpt-5.4"
-model_reasoning_effort = "high"
+model = "gpt-5.4-mini"
+model_reasoning_effort = "medium"
 sandbox_mode = "workspace-write"
 nickname_candidates = ["QuerySmith", "HookForge", "ApiLayer", "CacheKeeper"]
 developer_instructions = """
