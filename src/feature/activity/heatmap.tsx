@@ -1,4 +1,4 @@
-import { Text, useWindowDimensions, View } from "react-native";
+import { ScrollView, Text, useWindowDimensions, View } from "react-native";
 import { HeatmapGraph, type HeatmapGraphRow } from "@/components/shared";
 
 const DAY_LABELS = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"] as const;
@@ -64,72 +64,75 @@ export function Heatmap() {
 	const boardWidth = width - 112;
 	const cellSize = Math.max(18, Math.min(22, Math.floor(boardWidth / columns)));
 	const cellRadius = Math.max(5, Math.floor(cellSize / 4));
+	const heatmapWidth = columns * cellSize + (columns - 1) * 4;
 
 	return (
-		<View>
-			<View className="ml-12 flex-row justify-between pr-2">
-				{MONTH_LABELS.map((month) => (
-					<Text
-						key={month.label}
-						className="absolute text-[16px] font-medium text-[#b0b0b0]"
-						style={{
-							left: month.column * (cellSize + 4),
-						}}
-					>
-						{month.label}
-					</Text>
-				))}
-			</View>
-
-			<View className="mt-8 flex-row">
-				<View className="mr-5 justify-between py-0.5">
-					{DAY_LABELS.map((day) => (
-						<View
-							key={day}
-							className="justify-center"
-							style={{ height: cellSize }}
+		<ScrollView horizontal showsHorizontalScrollIndicator={false} bounces>
+			<View style={{ width: heatmapWidth + 48 }}>
+				<View className="ml-12 flex-row justify-between pr-2">
+					{MONTH_LABELS.map((month) => (
+						<Text
+							key={month.label}
+							className="absolute text-[16px] font-medium text-[#b0b0b0]"
+							style={{
+								left: month.column * (cellSize + 4),
+							}}
 						>
-							<Text className="text-[16px] font-medium text-[#b0b0b0]">
-								{day}
-							</Text>
-						</View>
+							{month.label}
+						</Text>
 					))}
 				</View>
 
-				<HeatmapGraph
-					cellRadius={cellRadius}
-					cellSize={cellSize}
-					columnGap={4}
-					levelClassNames={LEVEL_STYLES}
-					rowGap={4}
-					rows={HEATMAP_ROWS}
-				/>
-			</View>
-
-			<View className="mt-5 border-t border-[#ebebeb] pt-5">
-				<View className="flex-row items-center justify-center">
-					<View className="mr-2.5 h-4 w-4 rounded-sm bg-[#d2d2d2]" />
-					<Text className="text-[14px] font-medium text-[#7d7d7d]">
-						Goal Not Meet
-					</Text>
-					<Text className="ml-8 text-[14px] font-medium text-[#7d7d7d]">
-						Less
-					</Text>
-					<View className="ml-4 flex-row gap-1.5">
-						{LEVEL_STYLES.map((levelStyle) => (
+				<View className="mt-8 flex-row">
+					<View className="mr-5 justify-between py-0.5">
+						{DAY_LABELS.map((day) => (
 							<View
-								key={levelStyle}
-								className={levelStyle}
-								style={{
-									width: 16,
-									height: 16,
-									borderRadius: 4,
-								}}
-							/>
+								key={day}
+								className="justify-center"
+								style={{ height: cellSize }}
+							>
+								<Text className="text-[16px] font-medium text-[#b0b0b0]">
+									{day}
+								</Text>
+							</View>
 						))}
+					</View>
+
+					<HeatmapGraph
+						cellRadius={cellRadius}
+						cellSize={cellSize}
+						columnGap={4}
+						levelClassNames={LEVEL_STYLES}
+						rowGap={4}
+						rows={HEATMAP_ROWS}
+					/>
+				</View>
+
+				<View className="mt-5 border-t border-[#ebebeb] pt-5">
+					<View className="flex-row items-center justify-center">
+						<View className="mr-2.5 h-4 w-4 rounded-sm bg-[#d2d2d2]" />
+						<Text className="text-[14px] font-medium text-[#7d7d7d]">
+							Goal Not Meet
+						</Text>
+						<Text className="ml-8 text-[14px] font-medium text-[#7d7d7d]">
+							Less
+						</Text>
+						<View className="ml-4 flex-row gap-1.5">
+							{LEVEL_STYLES.map((levelStyle) => (
+								<View
+									key={levelStyle}
+									className={levelStyle}
+									style={{
+										width: 16,
+										height: 16,
+										borderRadius: 4,
+									}}
+								/>
+							))}
+						</View>
 					</View>
 				</View>
 			</View>
-		</View>
+		</ScrollView>
 	);
 }
