@@ -98,7 +98,7 @@ export function BottomNavigation() {
 			<View className="flex-row items-center gap-3.5">
 				{/* left side */}
 				<View
-					className="flex-1 flex-row items-center justify-between rounded-full bg-[#F6F6F4]  p-1 max-w-[70%]"
+					className="flex-none flex-row items-center justify-between rounded-full bg-[#F6F6F4] p-1"
 					style={softShadow}
 				>
 					{NAVIGATION_ITEMS.map((item) => {
@@ -136,7 +136,7 @@ export function BottomNavigation() {
 				</View>
 
 				{/* right side */}
-				<View className="relative w-12 items-center self-end">
+				<View className="relative ml-auto w-12 items-center self-end">
 					<AnimatedView
 						className="absolute bottom-14 w-12 rounded-full bg-[#2E2E2E] px-1.5 py-2"
 						pointerEvents={isActionMenuOpen ? "auto" : "none"}

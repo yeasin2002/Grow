@@ -23,8 +23,8 @@ export const NAVIGATION_ITEMS = [
 		label: "Calendar",
 		activeIcon: "calendar",
 		inactiveIcon: "calendar-outline",
-		route: "/activity",
-		matchRoutes: ["/activity", "/calendar"],
+		route: "/calendar",
+		matchRoutes: ["/calendar"],
 	},
 ] satisfies ReadonlyArray<{
 	label: string;
