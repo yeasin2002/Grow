@@ -7,6 +7,7 @@ allowBuilds:
   lefthook: true
   msw: true
   sharp: true
+  unrs-resolver: true
 catalog:
   "@types/node": ^25.6.0
   better-auth: ^1.6.9
