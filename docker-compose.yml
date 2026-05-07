@@ -1,0 +1,49 @@
+# Docker Compose for grow-new
+# Full-stack container orchestration
+
+name: grow-new
+
+services:
+  server:
+    build:
+      context: ./apps/server
+      dockerfile: Dockerfile
+    container_name: grow-new-server
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=postgresql://postgres:password@db:5432/grow-new
+    restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - grow-new-network
+
+  db:
+    image: postgres:16-alpine
+    container_name: grow-new-postgres
+    environment:
+      POSTGRES_DB: grow-new
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - grow-new_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - grow-new-network
+
+networks:
+  grow-new-network:
+    driver: bridge
+
+volumes:
+  grow-new_postgres_data:

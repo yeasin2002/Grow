@@ -1,0 +1,27 @@
+{
+  "name": "@grow-new/auth",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@better-auth/drizzle-adapter": "^1.6.9",
+    "@grow-new/db": "workspace:*",
+    "@grow-new/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@grow-new/config": "workspace:*",
+    "typescript": "^6.0.3"
+  }
+}
