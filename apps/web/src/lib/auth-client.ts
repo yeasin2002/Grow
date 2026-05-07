@@ -1,4 +1,4 @@
-import { env } from "@grow-new/env/web";
+import { env } from "@grow/env/web";
 import { createAuthClient } from "better-auth/react";
 
 export const authClient = createAuthClient({

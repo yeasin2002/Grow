@@ -1,6 +1,6 @@
 # Product Overview
 
-This is a **NestJS-based server application** that serves as part of the "grow-new" monorepo ecosystem. The server provides:
+This is a **NestJS-based server application** that serves as part of the "grow" monorepo ecosystem. The server provides:
 
 - **REST API endpoints** with CORS support for web applications
 - **Authentication integration** via Better Auth library with dedicated auth routes (`/api/auth/*`)
@@ -65,7 +65,7 @@ src/
 ### Import Patterns
 
 - Use path aliases: `import { logger } from "@/lib/logger"`
-- Monorepo packages: `import { auth } from "@grow-new/auth"`
+- Monorepo packages: `import { auth } from "@grow/auth"`
 - Relative imports for same-directory files
 
 ### Bootstrap Pattern
@@ -106,7 +106,7 @@ The `src/index.ts` file follows this pattern:
 
 ## Key Libraries
 
-- **Better Auth** - Authentication system (`@grow-new/auth`)
+- **Better Auth** - Authentication system (`@grow/auth`)
 - **Pino** - Structured logging with pino-pretty for development
 - **Zod** - Runtime type validation
 - **RxJS** - Reactive programming utilities
@@ -114,10 +114,10 @@ The `src/index.ts` file follows this pattern:
 
 ## Monorepo Dependencies
 
-- `@grow-new/auth` - Authentication module
-- `@grow-new/db` - Database utilities
-- `@grow-new/env` - Environment configuration
-- `@grow-new/config` - Shared TypeScript configuration
+- `@grow/auth` - Authentication module
+- `@grow/db` - Database utilities
+- `@grow/env` - Environment configuration
+- `@grow/config` - Shared TypeScript configuration
 
 ## Common Commands
 

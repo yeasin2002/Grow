@@ -1,6 +1,6 @@
 import "reflect-metadata";
-import { auth } from "@grow-new/auth";
-import { env } from "@grow-new/env/server";
+import { auth } from "@grow/auth";
+import { env } from "@grow/env/server";
 import { NestFactory } from "@nestjs/core";
 
 import { AppModule } from "./app.module";

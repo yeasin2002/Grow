@@ -1,4 +1,4 @@
-import { env } from "@grow-new/env/server";
+import { env } from "@grow/env/server";
 import { drizzle } from "drizzle-orm/node-postgres";
 
 import * as schema from "./schema/index";

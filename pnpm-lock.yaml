@@ -23,7 +23,7 @@ importers:
 
   .:
     dependencies:
-      '@grow-new/env':
+      '@grow/env':
         specifier: workspace:*
         version: link:packages/env
       dotenv:
@@ -33,7 +33,7 @@ importers:
         specifier: 'catalog:'
         version: 4.4.3
     devDependencies:
-      '@grow-new/config':
+      '@grow/config':
         specifier: workspace:*
         version: link:packages/config
       '@types/node':
@@ -265,13 +265,13 @@ importers:
 
   apps/server:
     dependencies:
-      '@grow-new/auth':
+      '@grow/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@grow-new/db':
+      '@grow/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@grow-new/env':
+      '@grow/env':
         specifier: workspace:*
         version: link:../../packages/env
       '@nestjs/common':
@@ -308,7 +308,7 @@ importers:
         specifier: 'catalog:'
         version: 4.4.3
     devDependencies:
-      '@grow-new/config':
+      '@grow/config':
         specifier: workspace:*
         version: link:../../packages/config
       '@types/express':
@@ -341,10 +341,10 @@ importers:
       '@fontsource-variable/inter':
         specifier: ^5.2.8
         version: 5.2.8
-      '@grow-new/auth':
+      '@grow/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@grow-new/env':
+      '@grow/env':
         specifier: workspace:*
         version: link:../../packages/env
       '@tabler/icons-react':
@@ -405,7 +405,7 @@ importers:
         specifier: 'catalog:'
         version: 4.4.3
     devDependencies:
-      '@grow-new/config':
+      '@grow/config':
         specifier: workspace:*
         version: link:../../packages/config
       '@tailwindcss/postcss':
@@ -432,10 +432,10 @@ importers:
       '@better-auth/drizzle-adapter':
         specifier: ^1.6.9
         version: 1.6.9(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(better-call@1.3.5(zod@4.4.3))(jose@6.2.3)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(drizzle-orm@0.45.2(@types/pg@8.20.0)(kysely@0.28.17)(pg@8.20.0))
-      '@grow-new/db':
+      '@grow/db':
         specifier: workspace:*
         version: link:../db
-      '@grow-new/env':
+      '@grow/env':
         specifier: workspace:*
         version: link:../env
       better-auth:
@@ -448,7 +448,7 @@ importers:
         specifier: 'catalog:'
         version: 4.4.3
     devDependencies:
-      '@grow-new/config':
+      '@grow/config':
         specifier: workspace:*
         version: link:../config
       typescript:
@@ -459,7 +459,7 @@ importers:
 
   packages/db:
     dependencies:
-      '@grow-new/env':
+      '@grow/env':
         specifier: workspace:*
         version: link:../env
       dotenv:
@@ -475,7 +475,7 @@ importers:
         specifier: 'catalog:'
         version: 4.4.3
     devDependencies:
-      '@grow-new/config':
+      '@grow/config':
         specifier: workspace:*
         version: link:../config
       '@types/pg':
@@ -503,7 +503,7 @@ importers:
         specifier: 'catalog:'
         version: 4.4.3
     devDependencies:
-      '@grow-new/config':
+      '@grow/config':
         specifier: workspace:*
         version: link:../config
       '@types/node':

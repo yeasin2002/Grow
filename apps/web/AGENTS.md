@@ -1,6 +1,6 @@
 # Product Overview
 
-**grow-new** is a modern web application built with Next.js that appears to be a development stack or platform. The application features:
+**grow** is a modern web application built with Next.js that appears to be a development stack or platform. The application features:
 
 - User authentication system with sign-in/sign-up functionality
 - Dashboard interface for authenticated users
@@ -184,5 +184,5 @@ npm run start        # Start production server
 ## Workspace Configuration
 
 - Uses workspace dependencies (`workspace:*`) for internal packages
-- Monorepo setup with shared packages (@grow-new/\*)
+- Monorepo setup with shared packages (@grow/\*)
 - Catalog-based dependency management for consistent versions

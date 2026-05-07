@@ -1,6 +1,6 @@
-# grow-new
+# grow
 
-`grow-new` is a TypeScript monorepo built with Better Fullstack. It combines a Next.js web app, a NestJS API, shared packages, and an Expo-based native app.
+`grow` is a TypeScript monorepo built with Better Fullstack. It combines a Next.js web app, a NestJS API, shared packages, and an Expo-based native app.
 
 ## Stack
 
@@ -17,7 +17,7 @@
 ## Repository Layout
 
 ```txt
-grow-new/
+grow/
 ├── apps/
 │   ├── web/      # Next.js frontend on port 3001
 │   ├── server/   # NestJS API on port 3000
@@ -49,7 +49,7 @@ pnpm run db:start
 - `apps/server/.env`
 
 ```env
-DATABASE_URL=postgresql://postgres:password@localhost:5432/grow-new
+DATABASE_URL=postgresql://postgres:password@localhost:5432/grow
 BETTER_AUTH_SECRET=your-secret-value
 BETTER_AUTH_URL=http://localhost:3000
 CORS_ORIGIN=http://localhost:3001

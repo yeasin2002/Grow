@@ -2,7 +2,7 @@
 
 # Product Overview
 
-**grow-new** is a modern full-stack web application built with TypeScript. It's a monorepo project created with Better Fullstack that combines a Next.js frontend with a NestJS backend API.
+**grow** is a modern full-stack web application built with TypeScript. It's a monorepo project created with Better Fullstack that combines a Next.js frontend with a NestJS backend API.
 
 ## Key Features
 
@@ -38,7 +38,7 @@ This is a development-focused project emphasizing:
 This project follows a standard monorepo structure with clear separation of concerns:
 
 ```
-grow-new/
+grow/
 ├── apps/                    # Application layer
 │   ├── web/                # Next.js frontend application
 │   └── server/             # NestJS backend API
@@ -111,7 +111,7 @@ apps/server/
 
 ## Import Patterns
 
-- **Workspace packages**: Use workspace protocol (`@grow-new/db`)
+- **Workspace packages**: Use workspace protocol (`@grow/db`)
 - **Relative imports**: Prefer absolute imports from `src/`
 - **External packages**: Standard npm imports
 

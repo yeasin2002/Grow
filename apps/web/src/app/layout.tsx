@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "grow-new",
-  description: "grow-new",
+  title: "grow",
+  description: "grow",
 };
 
 export default function RootLayout({

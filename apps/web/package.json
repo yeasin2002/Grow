@@ -11,8 +11,8 @@
     "@base-ui-components/react": "^1.0.0-rc.0",
     "@base-ui/react": "^1.4.1",
     "@fontsource-variable/inter": "^5.2.8",
-    "@grow-new/auth": "workspace:*",
-    "@grow-new/env": "workspace:*",
+    "@grow/auth": "workspace:*",
+    "@grow/env": "workspace:*",
     "@tabler/icons-react": "^3.41.1",
     "@tanstack/react-form": "^1.29.1",
     "@tanstack/react-query": "^5.100.5",
@@ -34,7 +34,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@grow-new/config": "workspace:*",
+    "@grow/config": "workspace:*",
     "@tailwindcss/postcss": "^4.2.4",
     "@types/node": "catalog:",
     "@types/react": "^19.2.14",

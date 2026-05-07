@@ -1,5 +1,5 @@
 {
-  "name": "@grow-new/env",
+  "name": "@grow/env",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -14,7 +14,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@grow-new/config": "workspace:*",
+    "@grow/config": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "^6.0.3"
   }

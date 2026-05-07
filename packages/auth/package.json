@@ -1,5 +1,5 @@
 {
-  "name": "@grow-new/auth",
+  "name": "@grow/auth",
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -14,14 +14,14 @@
   "scripts": {},
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.6.9",
-    "@grow-new/db": "workspace:*",
-    "@grow-new/env": "workspace:*",
+    "@grow/db": "workspace:*",
+    "@grow/env": "workspace:*",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@grow-new/config": "workspace:*",
+    "@grow/config": "workspace:*",
     "typescript": "^6.0.3"
   }
 }

@@ -10,9 +10,9 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@grow-new/auth": "workspace:*",
-    "@grow-new/db": "workspace:*",
-    "@grow-new/env": "workspace:*",
+    "@grow/auth": "workspace:*",
+    "@grow/db": "workspace:*",
+    "@grow/env": "workspace:*",
     "@nestjs/common": "^11.1.19",
     "@nestjs/core": "^11.1.19",
     "@nestjs/platform-express": "^11.1.19",
@@ -26,7 +26,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@grow-new/config": "workspace:*",
+    "@grow/config": "workspace:*",
     "@types/express": "^5.0.6",
     "@types/node": "catalog:",
     "pino-pretty": "^13.1.3",

@@ -1,6 +1,6 @@
-import { db } from "@grow-new/db";
-import * as schema from "@grow-new/db/schema/auth";
-import { env } from "@grow-new/env/server";
+import { db } from "@grow/db";
+import * as schema from "@grow/db/schema/auth";
+import { env } from "@grow/env/server";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
