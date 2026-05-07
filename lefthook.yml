@@ -4,8 +4,9 @@
 pre-commit:
   parallel: true
   jobs:
-    - name: biome
-      glob: "src/**/*.{ts,tsx,css}"
-      run: pnpm exec biome check --write --no-errors-on-unmatched {staged_files}
+    - name: oxlint
+      run: pnpm oxlint --fix {staged_files}
       stage_fixed: true
-    
+    - name: oxfmt
+      run: pnpm oxfmt --write {staged_files}
+      stage_fixed: true
