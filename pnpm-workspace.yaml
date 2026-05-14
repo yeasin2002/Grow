@@ -1,0 +1,21 @@
+packages:
+  - apps/*
+  - packages/*
+catalog:
+  dotenv: ^17.4.2
+  zod: ^4.4.3
+  "@types/node": ^25.6.2
+  better-auth: ^1.6.10
+  "@ts-rest/core": ^3.52.1
+  msw: ^2.14.6
+  vitest: ^4.1.5
+  "@vitest/ui": ^4.1.5
+  "@vitest/coverage-v8": ^4.1.5
+  jsdom: ^29.1.1
+  "@tanstack/react-form": ^1.32.0
+  react: ^19.2.6
+  react-dom: ^19.2.6
+  "@ts-rest/react-query": ^3.52.1
+  "@tanstack/react-query": ^5.100.9
+  "@types/react": ^19.2.14
+  "@better-auth/expo": ^1.6.10

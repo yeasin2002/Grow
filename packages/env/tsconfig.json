@@ -1,0 +1,3 @@
+{
+  "extends": "@grow-final/config/tsconfig.base.json"
+}

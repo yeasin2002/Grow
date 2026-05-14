@@ -1,0 +1,43 @@
+{
+  "name": "server",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsdown",
+    "check-types": "tsc -b",
+    "compile": "bun build --compile --minify --sourcemap --bytecode ./src/index.ts --outfile server",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.1045.0",
+    "@grow-final/api": "workspace:*",
+    "@grow-final/auth": "workspace:*",
+    "@grow-final/db": "workspace:*",
+    "@grow-final/env": "workspace:*",
+    "@nestjs/common": "^11.1.19",
+    "@nestjs/core": "^11.1.19",
+    "@nestjs/platform-express": "^11.1.19",
+    "@ts-rest/core": "catalog:",
+    "@ts-rest/serverless": "^3.52.1",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "express": "^5.2.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@grow-final/config": "workspace:*",
+    "@types/express": "^5.0.6",
+    "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "@vitest/ui": "catalog:",
+    "jsdom": "catalog:",
+    "msw": "catalog:",
+    "tsdown": "^0.22.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3",
+    "vitest": "catalog:"
+  }
+}
