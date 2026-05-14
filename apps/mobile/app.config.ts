@@ -21,7 +21,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     bundler: "metro",
   },
 
-  plugins: ["expo-font"],
+  plugins: ["expo-font", "expo-web-browser", "expo-router"],
 
   experiments: {
     typedRoutes: true,

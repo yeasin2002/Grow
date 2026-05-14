@@ -1,3 +1,12 @@
+This is a monorepo project, and it contains several other applications. They have their own agenda.md file that shows details, so whenever working on any specific app Make sure to read their README files and AGENTS.md for Guidelines
+
+Here are all rules of specific apps 
+- Mobile: apps/mobile/@AGENTS.md
+- Server: apps/server/@AGENTS.md
+- web: apps/web/@AGENTS.md
+<!-- and so on just like this -->
+
+
 <!-- BEGIN:Product -->
 
 # Product: Grow
@@ -302,7 +311,7 @@ Before implementing:
 
 **Minimum code that solves the problem. Nothing speculative.**
 
-- No features beyond what was asked.
+- No features beyond what was asked. If needed, then ask me first. 
 - No abstractions for single-use code.
 - No "flexibility" or "configurability" that wasn't requested.
 - No error handling for impossible scenarios.

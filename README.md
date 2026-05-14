@@ -1,151 +1,217 @@
-# Turborepo starter
+# Grow - Routine-Based Productivity App
 
-This Turborepo starter is maintained by the Turborepo core team.
+A routine-based productivity and task management application that emphasizes daily discipline and habit formation over traditional task completion. Unlike conventional task managers, Grow focuses on consistency and structured planning through repeatable routines.
 
-## Using this example
+## Product Architecture
 
-Run the following command:
-
-```sh
-npx create-turbo@latest
 ```
+Plan → Routine → Task → Timer → Activity Tracking
+```
+
+## Key Features
+
+- **Routine Management** - Structured daily routines (Morning, Noon, Evening, Night) with embedded tasks
+- **Study Time Tracker** - GitHub-style activity heatmap for consistency visualization
+- **Plan Creation** - Build repeatable workflows with metadata and reminders
+- **Focus Timer** - Task-linked timer with pause/resume controls and progress tracking
+- **Notes System** - Quick notes and checklists for contextual support
+- **Calendar View** - Monthly overview with task filtering (To do, Completed, Pending)
 
 ## What's inside?
 
-This Turborepo includes the following packages/apps:
+This monorepo includes the following apps and packages:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `mobile`: React Native/Expo app - the primary mobile application
+- `server`: NestJS backend API for data persistence and sync
+- `@repo/ui`: Shared React component library
+- `@repo/eslint-config`: ESLint configurations (base, next-js, react-internal)
+- `@repo/typescript-config`: Shared TypeScript configurations
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/) with strict mode enabled.
 
-### Utilities
+### Tech Stack
 
-This Turborepo has some additional tools already setup for you:
+**Mobile App (Primary Platform):**
+- React Native 0.83 + Expo 55
+- React 19.2.0 with React Compiler
+- TypeScript 5.9.2 (strict mode + noUncheckedIndexedAccess)
+- Expo Router 55 (file-based routing)
+- TailwindCSS 4 + Uniwind + HeroUI Native
+- Reanimated 4 + Gesture Handler
 
+**Backend:**
+- NestJS 11 with TypeScript
+- Express-based RESTful API
+- Jest for testing
+
+**Monorepo Tools:**
+- [Turborepo](https://turborepo.dev/) for build orchestration
+- [pnpm](https://pnpm.io/) for package management (required)
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
+- [ESLint](https://eslint.org/) + [Biome](https://biomejs.dev/) for code linting
 - [Prettier](https://prettier.io) for code formatting
+- [Lefthook](https://github.com/evilmartians/lefthook) for pre-commit hooks
+
+## Getting Started
+
+### Prerequisites
+- Node.js >= 18
+- pnpm 9.0.0 (required package manager)
+
+### Installation
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development servers for all apps
+pnpm dev
+
+# Or start specific apps
+pnpm dev --filter=mobile    # Mobile app only
+pnpm dev --filter=server    # Server only
+```
+
+### Mobile Development
+
+```bash
+cd apps/mobile
+
+# Start Expo development server
+pnpm dev                   # With cache clearing
+pnpm start                 # Standard start
+
+# Run on specific platforms
+pnpm ios                   # iOS simulator
+pnpm android               # Android emulator
+pnpm web                   # Browser
+```
 
 ### Build
 
-To build all apps and packages, run the following command:
+To build all apps and packages:
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+```bash
+# Build everything
+pnpm build
 
-```sh
-cd my-turborepo
-turbo build
+# Build specific apps
+pnpm build --filter=mobile
+pnpm build --filter=server
 ```
 
-Without global `turbo`, use your package manager:
+### Development
 
-```sh
-cd my-turborepo
-npx turbo build
-pnpm dlx turbo build
-pnpm exec turbo build
+To develop all apps and packages:
+
+```bash
+# Start all development servers
+pnpm dev
+
+# Develop specific apps
+pnpm dev --filter=mobile
+pnpm dev --filter=server
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+### Code Quality
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+```bash
+# Lint all workspaces
+pnpm lint
 
-```sh
-turbo build --filter=docs
+# Format all files
+pnpm format
+
+# Type check all workspaces
+pnpm check-types
 ```
 
-Without global `turbo`:
+### Mobile App Commands
 
-```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+```bash
+cd apps/mobile
+
+# Code quality
+pnpm check                 # Biome lint + format check
+pnpm fix                   # Biome lint + format fix
+pnpm check-types           # TypeScript type check
+pnpm knip                  # Dead code analysis
 ```
 
-### Develop
+### Server Commands
 
-To develop all apps and packages, run the following command:
+```bash
+cd apps/server
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+# Development
+pnpm dev                   # NestJS watch mode
+pnpm start:debug           # Debug mode
 
-```sh
-cd my-turborepo
-turbo dev
+# Testing
+pnpm test                  # Run tests
+pnpm test:watch            # Watch mode
+pnpm test:cov              # Coverage report
 ```
 
-Without global `turbo`, use your package manager:
+## Project Structure
 
-```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
+```
+├── apps/
+│   ├── mobile/                    # React Native/Expo app (primary)
+│   └── server/                    # NestJS backend API
+├── packages/
+│   ├── ui/                        # Shared React components
+│   ├── eslint-config/             # ESLint configurations
+│   └── typescript-config/         # TypeScript configurations
+├── turbo.json                     # Turborepo configuration
+└── package.json                   # Root workspace config
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+### Mobile App Structure
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
+```
+apps/mobile/src/
+├── app/                          # Expo Router screens (file-based routing)
+├── components/                   # Reusable UI components
+├── feature/                      # Feature-specific components
+├── contexts/                     # React Context providers
+├── lib/                          # Utility modules
+├── data/                         # Static data and constants
+└── assets/                       # Static assets
 ```
 
-Without global `turbo`:
+## Development Guidelines
 
-```sh
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
+- Use `@/` path alias for imports from `src/` directory (mobile app)
+- Follow PascalCase for components, kebab-case for utilities
+- Leverage HeroUI Native components for consistent theming
+- Use `cn()` helper for conditional class merging
+- Strict TypeScript with `noUncheckedIndexedAccess` enabled
+- React Compiler handles memoization automatically
 
-### Remote Caching
+## Remote Caching
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+Turborepo can use [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
+```bash
+# Authenticate with Vercel
 pnpm exec turbo login
-pnpm exec turbo login
-```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-pnpm exec turbo link
+# Link your Turborepo to Remote Cache
 pnpm exec turbo link
 ```
+
+## Contributing
+
+1. **Feature Development**: Start in `apps/mobile/src/feature/` for new features
+2. **Shared Components**: Extract to `apps/mobile/src/components/shared/` when reused
+3. **Cross-App Components**: Move to `packages/ui/` when needed by multiple apps
+4. **Routing**: Add new screens in `apps/mobile/src/app/` following Expo Router conventions
+5. **Data Layer**: Add API calls in `apps/mobile/src/api/` with hooks pattern
 
 ## Useful Links
 
