@@ -4,21 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-catalogs:
-  default:
-    '@types/node':
-      specifier: ^25.6.0
-      version: 25.6.0
-    better-auth:
-      specifier: ^1.6.9
-      version: 1.6.9
-    dotenv:
-      specifier: ^17.4.2
-      version: 17.4.2
-    zod:
-      specifier: ^4.3.6
-      version: 4.4.3
-
 importers:
 
   .:
@@ -78,9 +63,6 @@ importers:
       '@t3-oss/env-core':
         specifier: ^0.13.10
         version: 0.13.11(typescript@5.9.3)(zod@4.4.3)
-      '@tabler/icons-react-native':
-        specifier: ^3.41.1
-        version: 3.43.0(react-native-svg@15.15.3(react-native@0.83.4(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0))(react@19.2.0)
       check-types:
         specifier: ^11.2.3
         version: 11.2.3
@@ -3899,12 +3881,6 @@ packages:
         optional: true
       zod:
         optional: true
-
-  '@tabler/icons-react-native@3.43.0':
-    resolution: {integrity: sha512-w1TnUa72Z1ZoeNEP0LUfnNMffKutT7ayStdGJA2EYHx30K9197AzzaUSvtvd4Xojsw1TQvfzFQPH7bxK/pUDWg==}
-    peerDependencies:
-      react: '>= 16.5.1'
-      react-native-svg: '>= 13.0.0'
 
   '@tabler/icons-react@3.43.0':
     resolution: {integrity: sha512-rXUuCQEeRbEk3lJxs3gwzdtaaITSwc/JUbp+AkqsGff5uBpzZw7eKPDk53xKoKLyjrbj82Ai4GuVG0kO89Jf5g==}
@@ -12792,12 +12768,6 @@ snapshots:
     optionalDependencies:
       typescript: 6.0.3
       zod: 4.4.3
-
-  '@tabler/icons-react-native@3.43.0(react-native-svg@15.15.3(react-native@0.83.4(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0))(react@19.2.0)':
-    dependencies:
-      '@tabler/icons': 3.43.0
-      react: 19.2.0
-      react-native-svg: 15.15.3(react-native@0.83.4(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)
 
   '@tabler/icons-react@3.43.0(react@19.2.6)':
     dependencies:
