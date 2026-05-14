@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { RootWrapper } from "@/components/common";
 import { BottomNavigation } from "@/components/shared";
 
+
 export const unstable_settings = {
 	initialRouteName: "index",
 };
