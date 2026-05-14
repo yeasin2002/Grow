@@ -1,75 +1,15 @@
 {
   "version": 1,
   "skills": {
-    "building-native-ui": {
-      "source": "expo/skills",
-      "sourceType": "github",
-      "computedHash": "342df93f481a0dba919f372d6c7b40d2b4bf5b51dd24363aea2e5d0bae27a6fa"
-    },
-    "expo-cicd-workflows": {
-      "source": "expo/skills",
-      "sourceType": "github",
-      "computedHash": "700b20b575fcbe75ad238b41a0bd57938abe495e62dc53e05400712ab01ee7c0"
-    },
-    "expo-deployment": {
-      "source": "expo/skills",
-      "sourceType": "github",
-      "computedHash": "9ea9f16374765c1b16764a51bd43a64098921b33f48e94d9c5c1cce24b335c10"
-    },
-    "expo-dev-client": {
-      "source": "expo/skills",
-      "sourceType": "github",
-      "computedHash": "234e2633b7fbcef2d479f8fe8ab20d53d08ed3e4beec7c965da4aff5b43affe7"
-    },
-    "expo-module": {
-      "source": "expo/skills",
-      "sourceType": "github",
-      "computedHash": "c1e47893d207b68c9a2a5b0de3f97042f82a65c0b3c3a33a7114029211b8e89b"
-    },
-    "expo-tailwind-setup": {
-      "source": "expo/skills",
-      "sourceType": "github",
-      "computedHash": "d39e806942fe880347f161056729b588a3cb0f1796270eebf52633fe11cfdce1"
-    },
-    "find-skills": {
-      "source": "vercel-labs/skills",
-      "sourceType": "github",
-      "computedHash": "d31e234f0c90694a670222cdd1dafa853e051d7066beda389f1097c22dadd461"
-    },
-    "frontend-design": {
-      "source": "anthropics/skills",
-      "sourceType": "github",
-      "computedHash": "063a0e6448123cd359ad0044cc46b0e490cc7964d45ef4bb9fd842bd2ffbca67"
-    },
     "heroui-native": {
       "source": "heroui-inc/heroui",
       "sourceType": "github",
       "computedHash": "f72e4f0ca9e88198fa0b1665a352a18b20a08deec5818fb0f1b23085c4e9b935"
     },
-    "native-data-fetching": {
-      "source": "expo/skills",
-      "sourceType": "github",
-      "computedHash": "3cd0ba91f359f9f84cd40f36f356287994a0e952520fac6e03ef7952d0397879"
-    },
     "react-doctor": {
       "source": "millionco/react-doctor",
       "sourceType": "github",
       "computedHash": "efa8db174b3c60e27b34d76842e3a9a7c0e5e602fd4d66eec897372d0ce3f30b"
-    },
-    "react-native-ease-refactor": {
-      "source": "appandflow/react-native-ease",
-      "sourceType": "github",
-      "computedHash": "ff150edd2851a0d8bbddf30d07045e61431350f2c2459576bd0fd6f4b331dbb5"
-    },
-    "uniwind": {
-      "source": "uni-stack/uniwind",
-      "sourceType": "github",
-      "computedHash": "69723f989a9fb09528f8fbdfbb2b4d3917223bc4538fcb5de1b07e0b72cb0873"
-    },
-    "use-dom": {
-      "source": "expo/skills",
-      "sourceType": "github",
-      "computedHash": "8eca0e229f16e3499e5dbf791a79f5a5cba1e98b4af88ca495c903930d7f1ba0"
     },
     "vercel-react-native-skills": {
       "source": "vercel-labs/agent-skills",
