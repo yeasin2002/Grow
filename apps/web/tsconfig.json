@@ -1,6 +1,9 @@
 {
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "declaration": true,
+    "skipLibCheck": true,
     "plugins": [
       {
         "name": "next"
