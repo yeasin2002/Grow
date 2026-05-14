@@ -4,6 +4,7 @@ import { Text, View } from "react-native";
 
 import { Container } from "@/feature/homepage/container";
 
+
 export default function NotFoundScreen() {
 	return (
 		<>
