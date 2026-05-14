@@ -6,11 +6,11 @@ import { WeekCalendar } from "@/feature/homepage/week-calendar";
 
 export default function HomePage() {
 	return (
-		<Container className="bg-background">
-			<GreetingHeader name="Yeasin" message="Let's Make Progress Today !" />
-			<WeekCalendar selectedDate={10} />
-			<ProgressSection />
-			<TaskFilterTabs />
-		</Container>
-	);
+    <Container className="bg-background">
+      <GreetingHeader name="Kawsar" message="Let's Make Progress Today !" />
+      <WeekCalendar selectedDate={10} />
+      <ProgressSection />
+      <TaskFilterTabs />
+    </Container>
+  );
 }
