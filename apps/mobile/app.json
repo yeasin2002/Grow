@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "scheme": "grow",
+    "userInterfaceStyle": "automatic",
+    "orientation": "default",
+    "name": "Grow",
+    "slug": "Grow",
+
+    "android": {
+      "package": "com.yeasin2002.dev.Grow"
+    },
+
+    "splash": {
+      "image": "./src/assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F1F1F1"
+    },
+
+    "plugins": ["expo-font", "expo-router"],
+
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
