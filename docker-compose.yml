@@ -1,14 +1,14 @@
-# Docker Compose for grow-final
+# Docker Compose for grow
 # Full-stack container orchestration
 
-name: grow-final
+name: grow
 
 services:
   web:
     build:
       context: ./apps/web
       dockerfile: Dockerfile
-    container_name: grow-final-web
+    container_name: grow-web
     ports:
       - "3000:3000"
     environment:
@@ -18,36 +18,36 @@ services:
     depends_on:
       - server
     networks:
-      - grow-final-network
+      - grow-network
 
   server:
     build:
       context: ./apps/server
       dockerfile: Dockerfile
-    container_name: grow-final-server
+    container_name: grow-server
     ports:
       - "3001:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - DATABASE_URL=postgresql://postgres:password@db:5432/grow-final
+      - DATABASE_URL=postgresql://postgres:password@db:5432/grow
     restart: unless-stopped
     depends_on:
       - db
     networks:
-      - grow-final-network
+      - grow-network
 
   db:
     image: postgres:16-alpine
-    container_name: grow-final-postgres
+    container_name: grow-postgres
     environment:
-      POSTGRES_DB: grow-final
+      POSTGRES_DB: grow
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
     volumes:
-      - grow-final_postgres_data:/var/lib/postgresql/data
+      - grow_postgres_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -55,11 +55,11 @@ services:
       retries: 5
     restart: unless-stopped
     networks:
-      - grow-final-network
+      - grow-network
 
 networks:
-  grow-final-network:
+  grow-network:
     driver: bridge
 
 volumes:
-  grow-final_postgres_data:
+  grow_postgres_data:

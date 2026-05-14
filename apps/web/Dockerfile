@@ -1,4 +1,4 @@
-# Dockerfile for grow-final Next.js app
+# Dockerfile for grow Next.js app
 # Optimized multi-stage build for Docker deployment
 
 FROM node:20-alpine AS base

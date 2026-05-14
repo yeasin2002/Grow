@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.1045.0",
-    "@grow-final/api": "workspace:*",
-    "@grow-final/auth": "workspace:*",
-    "@grow-final/db": "workspace:*",
-    "@grow-final/env": "workspace:*",
+    "@grow/api": "workspace:*",
+    "@grow/auth": "workspace:*",
+    "@grow/db": "workspace:*",
+    "@grow/env": "workspace:*",
     "@nestjs/common": "^11.1.19",
     "@nestjs/core": "^11.1.19",
     "@nestjs/platform-express": "^11.1.19",
@@ -28,7 +28,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@grow-final/config": "workspace:*",
+    "@grow/config": "workspace:*",
     "@types/express": "^5.0.6",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",

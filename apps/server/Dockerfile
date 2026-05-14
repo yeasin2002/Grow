@@ -1,4 +1,4 @@
-# Dockerfile for grow-final server
+# Dockerfile for grow server
 # Optimized multi-stage build for Docker deployment
 
 # Build stage
@@ -21,7 +21,7 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 
 # Build the application
-RUN pnpm run build --filter=@grow-final/server
+RUN pnpm run build --filter=server
 
 # Production stage
 FROM node:20-alpine AS runner

@@ -1,4 +1,4 @@
-import "@grow-final/env/web";
+import "@grow/env/web";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {

@@ -1,5 +1,5 @@
 {
-  "name": "@grow-final/api",
+  "name": "@grow/api",
   "type": "module",
   "exports": {
     ".": {
@@ -11,15 +11,15 @@
   },
   "scripts": {},
   "dependencies": {
-    "@grow-final/auth": "workspace:*",
-    "@grow-final/db": "workspace:*",
-    "@grow-final/env": "workspace:*",
+    "@grow/auth": "workspace:*",
+    "@grow/db": "workspace:*",
+    "@grow/env": "workspace:*",
     "@ts-rest/core": "catalog:",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@grow-final/config": "workspace:*",
+    "@grow/config": "workspace:*",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/ui": "catalog:",
     "jsdom": "catalog:",

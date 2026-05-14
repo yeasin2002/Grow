@@ -1,4 +1,4 @@
-# grow-final
+# grow
 
 This file provides context about the project for AI assistants.
 
@@ -40,7 +40,7 @@ This file provides context about the project for AI assistants.
 ## Project Structure
 
 ```
-grow-final/
+grow/
 ├── apps/
 │   ├── web/         # Frontend application
 │   ├── native/      # Mobile application (React Native)

@@ -1,5 +1,5 @@
-import { contract } from "@grow-final/api/index";
-import { env } from "@grow-final/env/native";
+import { contract } from "@grow/api/index";
+import { env } from "@grow/env/native";
 import { QueryClient } from "@tanstack/react-query";
 import { initClient, tsRestFetchApi } from "@ts-rest/core";
 import { initTsrReactQuery } from "@ts-rest/react-query/v5";

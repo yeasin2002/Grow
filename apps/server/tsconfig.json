@@ -1,5 +1,5 @@
 {
-  "extends": "@grow-final/config/tsconfig.base.json",
+  "extends": "@grow/config/tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",

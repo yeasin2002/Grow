@@ -1,17 +1,17 @@
-name: grow-final
+name: grow
 
 services:
   postgres:
     image: postgres
-    container_name: grow-final-postgres
+    container_name: grow-postgres
     environment:
-      POSTGRES_DB: grow-final
+      POSTGRES_DB: grow
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
     volumes:
-      - grow-final_postgres_data:/var/lib/postgresql
+      - grow_postgres_data:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -20,4 +20,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  grow-final_postgres_data:
+  grow_postgres_data:

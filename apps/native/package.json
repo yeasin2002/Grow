@@ -1,5 +1,5 @@
 {
-  "name": "expo-starter",
+  "name": "grow-mobile",
   "version": "1.0.0",
   "private": true,
   "main": "expo-router/entry",
@@ -20,8 +20,8 @@
     "@expo/metro-runtime": "~55.0.9",
     "@expo/vector-icons": "^15.0.3",
     "@gorhom/bottom-sheet": "^5",
-    "@grow-final/api": "workspace:*",
-    "@grow-final/env": "workspace:*",
+    "@grow/api": "workspace:*",
+    "@grow/env": "workspace:*",
     "@react-navigation/drawer": "^7.3.9",
     "@react-navigation/elements": "^2.8.1",
     "@t3-oss/env-core": "^0.13.10",

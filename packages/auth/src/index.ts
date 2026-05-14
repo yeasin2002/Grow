@@ -1,7 +1,7 @@
 import { expo } from "@better-auth/expo";
-import { db } from "@grow-final/db";
-import * as schema from "@grow-final/db/schema/auth";
-import { env } from "@grow-final/env/server";
+import { db } from "@grow/db";
+import * as schema from "@grow/db/schema/auth";
+import { env } from "@grow/env/server";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 

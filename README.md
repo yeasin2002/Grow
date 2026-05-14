@@ -1,4 +1,4 @@
-# grow-final
+# grow
 
 This project was created with [Better Fullstack](https://github.com/Marve10s/Better-Fullstack), a modern TypeScript stack that combines Next.js, Nestjs, TS-REST, and more.
 
@@ -56,7 +56,7 @@ The API is running at [http://localhost:3000](http://localhost:3000).
 ## Project Structure
 
 ```
-grow-final/
+grow/
 ├── apps/
 │   ├── web/         # Frontend application (Next.js)
 │   ├── native/      # Mobile application (React Native, Expo)

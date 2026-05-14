@@ -1,5 +1,5 @@
 {
-  "name": "grow-final",
+  "name": "grow",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -13,23 +13,23 @@
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",
-    "db:push": "turbo -F @grow-final/db db:push",
-    "db:studio": "turbo -F @grow-final/db db:studio",
-    "db:generate": "turbo -F @grow-final/db db:generate",
-    "db:migrate": "turbo -F @grow-final/db db:migrate",
-    "db:start": "turbo -F @grow-final/db db:start",
-    "db:watch": "turbo -F @grow-final/db db:watch",
-    "db:stop": "turbo -F @grow-final/db db:stop",
-    "db:down": "turbo -F @grow-final/db db:down",
+    "db:push": "turbo -F @grow/db db:push",
+    "db:studio": "turbo -F @grow/db db:studio",
+    "db:generate": "turbo -F @grow/db db:generate",
+    "db:migrate": "turbo -F @grow/db db:migrate",
+    "db:start": "turbo -F @grow/db db:start",
+    "db:watch": "turbo -F @grow/db db:watch",
+    "db:stop": "turbo -F @grow/db db:stop",
+    "db:down": "turbo -F @grow/db db:down",
     "check": "oxlint && oxfmt --write"
   },
   "dependencies": {
-    "@grow-final/env": "workspace:*",
+    "@grow/env": "workspace:*",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@grow-final/config": "workspace:*",
+    "@grow/config": "workspace:*",
     "@types/node": "catalog:",
     "oxfmt": "^0.48.0",
     "oxlint": "^1.63.0",
