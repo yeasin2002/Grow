@@ -2,6 +2,8 @@
 
 This project was created with [Better Fullstack](https://github.com/Marve10s/Better-Fullstack), a modern TypeScript stack that combines Next.js, Nestjs, TS-REST, and more.
 
+![cover](./cover.jpg)
+
 ## Features
 
 - **TypeScript** - For type safety and improved developer experience
