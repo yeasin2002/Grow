@@ -1,29 +1,12 @@
-import { Text, View } from "react-native";
 import { Icons } from "@/lib";
+import { Text, View } from "react-native";
 
-function HeroIconCard({
-	className,
-	icon,
-	iconSize,
-}: {
-	className: string;
-	icon: React.ComponentProps<typeof Icons>["name"];
-	iconSize: number;
-}) {
-	return (
-		<View
-			className={`absolute h-17 w-17 items-center justify-center rounded-[20px] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.10)] ${className}`}
-		>
-			<Icons className="text-[#d2d2d2]" name={icon} size={iconSize} />
-		</View>
-	);
-}
-
-type NotesHeroProps = {
-	noteCount: number;
+type HeroMainProps = {
+	title: string;
+	subtitle: string;
 };
 
-export function NotesHero({ noteCount }: NotesHeroProps) {
+export function PageHero({ title, subtitle }: HeroMainProps) {
 	return (
 		<View className="items-center">
 			<View className="relative h-27 w-48">
@@ -45,11 +28,29 @@ export function NotesHero({ noteCount }: NotesHeroProps) {
 			</View>
 
 			<Text className="mt-1 text-[30px] font-bold tracking-[-0.8px] text-black">
-				My Notes
+				{title}
 			</Text>
 			<Text className="mt-1 text-[16px] font-medium tracking-[-0.2px] text-[#898989]">
-				{noteCount} notes
+				{subtitle}
 			</Text>
+		</View>
+	);
+}
+
+function HeroIconCard({
+	className,
+	icon,
+	iconSize,
+}: {
+	className: string;
+	icon: React.ComponentProps<typeof Icons>["name"];
+	iconSize: number;
+}) {
+	return (
+		<View
+			className={`absolute h-17 w-17 items-center justify-center rounded-[20px] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.10)] ${className}`}
+		>
+			<Icons className="text-[#d2d2d2]" name={icon} size={iconSize} />
 		</View>
 	);
 }

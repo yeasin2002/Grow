@@ -1,15 +1,12 @@
-import { ScrollView, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-
+import { PageHero } from "@/components/shared/index";
 import {
 	NotePreview,
 	NotesCard,
-	NotesHero,
 	NotesSearchRow,
 	NotesSection,
 } from "@/feature/notes";
-
-const NOTES_TOTAL = 2;
+import { ScrollView, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function NotesScreen() {
 	const insets = useSafeAreaInsets();
@@ -26,7 +23,7 @@ export default function NotesScreen() {
 					paddingHorizontal: 14,
 				}}
 			>
-				<NotesHero noteCount={NOTES_TOTAL} />
+				<PageHero title="My Notes" subtitle="2 notes" />
 				<NotesSearchRow />
 
 				<NotesSection title="Today">
