@@ -16,7 +16,7 @@ Grow is a full-stack TypeScript application built with a modern monorepo archite
 
 ## Target Platforms
 
-- Web browsers (via Next.js)
+- landing page (via Next.js)
 - iOS and Android devices (via Expo/React Native)
 - Backend services (Node.js/NestJS)
 

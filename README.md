@@ -1,82 +1,118 @@
-# grow
-
-This project was created with [Better Fullstack](https://github.com/Marve10s/Better-Fullstack), a modern TypeScript stack that combines Next.js, Nestjs, TS-REST, and more.
+# Grow
 
 ![cover](./cover.jpg)
 
-## Features
+## What is Grow?
 
-- **TypeScript** - For type safety and improved developer experience
-- **Next.js** - Full-stack React framework
-- **React Native** - Build mobile apps using React
-- **Expo** - Tools for React Native development
-- **TailwindCSS** - CSS framework
-- **shadcn/ui** - UI components
-- **Node.js** - Runtime environment
-- **Drizzle** - TypeScript-first ORM
-- **PostgreSQL** - Database engine
-- **Authentication** - Better Auth
-- **Oxlint** - Oxlint + Oxfmt (linting & formatting)
-- **MSW** - Mock Service Worker for API mocking
-- **Turborepo** - Optimized monorepo build system
+Grow is a modern full-stack application platform that brings together web, mobile, and backend services into one unified ecosystem. Whether you're accessing it from your browser, iPhone, or Android device, Grow provides a seamless experience across all platforms.
 
-## Getting Started
+### Key Capabilities
 
-First, install the dependencies:
+- **Multi-Platform Access**: Use Grow on the web through your browser or on your mobile device with native iOS and Android apps
+- **Secure Authentication**: Built-in user authentication and authorization to keep your data safe
+- **Real-Time Data**: All your information is synchronized across devices in real-time
+- **Modern Interface**: Clean, responsive design that works beautifully on any screen size
+- **Type-Safe Architecture**: Built with TypeScript to ensure reliability and catch errors before they reach users
 
-```bash
-pnpm install
-```
+## Technology Overview
 
-## Database Setup
+Grow is built with a modern technology stack designed for performance, scalability, and developer productivity:
 
-This project uses PostgreSQL with Drizzle ORM.
+### Frontend
+- **Web**: Next.js 16 with React 19 for fast, SEO-friendly web applications
+- **Mobile**: React Native with Expo for native iOS and Android experiences
+- **Styling**: TailwindCSS for consistent, responsive design across platforms
+- **UI Components**: shadcn/ui for web, heroui-native for mobile
 
-1. Make sure you have a PostgreSQL database set up.
-2. Update your `apps/server/.env` file with your PostgreSQL connection details.
+### Backend
+- **API Server**: NestJS with Express for robust, scalable backend services
+- **Database**: PostgreSQL with Drizzle ORM for reliable data management
+- **Authentication**: Better Auth for secure user authentication
+- **Type Safety**: TS-REST for end-to-end type-safe API contracts
 
-3. Apply the schema to your database:
+### Development Tools
+- **Monorepo**: Turborepo for efficient multi-package development
+- **Package Manager**: pnpm for fast, disk-efficient dependency management
+- **Code Quality**: Oxlint and Oxfmt for consistent code formatting and linting
+- **Testing**: Vitest and MSW for comprehensive testing coverage
 
-```bash
-pnpm run db:push
-```
+---
 
-Then, run the development server:
+## For Developers
 
-```bash
-pnpm run dev
-```
+### Getting Started
 
-Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
-Use the Expo Go app to run the mobile application.
-The API is running at [http://localhost:3000](http://localhost:3000).
+**Prerequisites**: Node.js 18+, pnpm 10+, Docker (for PostgreSQL)
 
-## Git Hooks and Formatting
+1. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
 
-- Format and lint fix: `pnpm run check`
+2. **Set up the database**
+   ```bash
+   # Start PostgreSQL container
+   pnpm run db:start
+   
+   # Push database schema
+   pnpm run db:push
+   ```
 
-## Project Structure
+3. **Configure environment variables**
+   - Copy `.env.example` to `.env` in `apps/server/`
+   - Update with your database credentials
+
+4. **Start development servers**
+   ```bash
+   # Start all applications
+   pnpm run dev
+   
+   # Or start individually
+   pnpm run dev:web      # Web app on http://localhost:3001
+   pnpm run dev:server   # API server on http://localhost:3000
+   pnpm run dev:native   # Mobile app with Expo
+   ```
+
+### Project Structure
 
 ```
 grow/
 ├── apps/
-│   ├── web/         # Frontend application (Next.js)
-│   ├── native/      # Mobile application (React Native, Expo)
-│   └── server/      # Backend API (Nestjs, TS-REST)
+│   ├── web/         # Next.js web application
+│   ├── native/      # React Native mobile app (Expo)
+│   └── server/      # NestJS API server
 ├── packages/
-│   ├── api/         # API layer / business logic
-│   ├── auth/        # Authentication configuration & logic
-│   └── db/          # Database schema & queries
+│   ├── api/         # Shared API contracts (TS-REST)
+│   ├── auth/        # Authentication logic (Better Auth)
+│   ├── db/          # Database schema & queries (Drizzle)
+│   ├── env/         # Environment variable validation
+│   └── config/      # Shared configurations
 ```
 
-## Available Scripts
+### Common Commands
 
-- `pnpm run dev`: Start all applications in development mode
-- `pnpm run build`: Build all applications
-- `pnpm run dev:web`: Start only the web application
-- `pnpm run dev:server`: Start only the server
-- `pnpm run check-types`: Check TypeScript types across all apps
-- `pnpm run dev:native`: Start the React Native/Expo development server
-- `pnpm run db:push`: Push schema changes to database
-- `pnpm run db:studio`: Open database studio UI
-- `pnpm run check`: Run Oxlint and Oxfmt
+```bash
+# Development
+pnpm run dev              # Start all apps
+pnpm run build            # Build all apps
+pnpm run check-types      # Type check all workspaces
+
+# Database
+pnpm run db:studio        # Open Drizzle Studio
+pnpm run db:generate      # Generate migrations
+pnpm run db:migrate       # Run migrations
+
+# Code Quality
+pnpm run check            # Lint and format code
+```
+
+### Architecture Highlights
+
+- **Monorepo**: Turborepo manages multiple apps and shared packages efficiently
+- **Type Safety**: End-to-end type safety from database to UI using TypeScript, Drizzle, and TS-REST
+- **Shared Logic**: Business logic in `@grow/api` is consumed by all applications
+- **Workspace Protocol**: Packages reference each other using `workspace:*` for seamless development
+
+---
+
+*This project was bootstrapped with [Better Fullstack](https://github.com/Marve10s/Better-Fullstack)*
