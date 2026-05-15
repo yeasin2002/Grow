@@ -17,7 +17,7 @@ export default function StackLayout() {
 		pathname === "/" ||
 		pathname === "/notes" ||
 		pathname === "/activity" ||
-		pathname === "/calendar";
+		pathname === "/routine";
 
 	return (
 		<RootWrapper>
@@ -35,9 +35,7 @@ export default function StackLayout() {
 						statusBarStyle: "dark",
 						statusBarTranslucent: true,
 					}}
-				>
-					<Stack.Screen name="index" />
-				</Stack>
+				/>
 				{shouldShowBottomNavigation ? (
 					<View
 						pointerEvents="box-none"

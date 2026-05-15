@@ -1,6 +1,6 @@
+import type { Icons } from "@/lib";
 import type { Href } from "expo-router";
 import type { ComponentProps } from "react";
-import type { Icons } from "@/lib";
 
 type IconName = NonNullable<ComponentProps<typeof Icons>["name"]>;
 
@@ -20,11 +20,11 @@ export const NAVIGATION_ITEMS = [
 		matchRoutes: ["/notes"],
 	},
 	{
-		label: "Calendar",
+		label: "Routine",
 		activeIcon: "calendar",
 		inactiveIcon: "calendar-outline",
-		route: "/calendar",
-		matchRoutes: ["/calendar"],
+		route: "/routine",
+		matchRoutes: ["/routine"],
 	},
 ] satisfies ReadonlyArray<{
 	label: string;
