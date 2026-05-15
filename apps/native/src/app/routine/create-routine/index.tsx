@@ -1,4 +1,4 @@
-import { PageHero } from "@/components/shared/index";
+import { PageHero } from "@/components/shared";
 import { Container } from "@/feature/homepage/container";
 import { Icons } from "@/lib";
 import {
@@ -7,304 +7,28 @@ import {
 	ControlField,
 	FieldError,
 	Input,
-	Switch,
 	TextField,
 } from "heroui-native";
 import { useState } from "react";
 import { Text, View } from "react-native";
-import z from "zod";
 
-const CARD_SHADOW = {
-	shadowColor: "#000000",
-	shadowOpacity: 0.06,
-	shadowOffset: { width: 0, height: 10 },
-	shadowRadius: 24,
-	elevation: 4,
-} as const;
+import {
+	buildErrorMap,
+	CARD_SHADOW,
+	createInitialValues,
+	removeErrorPaths,
+	routineSchema,
+	WEEK_DAYS,
+	type DayKey,
+	type RoutineFormValues,
+} from "../../../feature/routine/create-routine-form";
+import {
+	AddRoutineButton,
+	HeroSwitch,
+	TimeInputCard,
+} from "../../../feature/routine/create-routine-parts";
 
-const WEEK_DAYS = [
-	{ key: "mo", shortLabel: "Mo", label: "Monday" },
-	{ key: "tu", shortLabel: "Tu", label: "Tuesday" },
-	{ key: "we", shortLabel: "We", label: "Wednesday" },
-	{ key: "th", shortLabel: "Th", label: "Thursday" },
-	{ key: "fr", shortLabel: "Fr", label: "Friday" },
-	{ key: "sa", shortLabel: "Sa", label: "Saturday" },
-	{ key: "su", shortLabel: "Su", label: "Sunday" },
-] as const;
-
-type DayKey = (typeof WEEK_DAYS)[number]["key"];
-
-type DayRoutineState = {
-	selected: boolean;
-	enabled: boolean;
-	startTime: string;
-	endTime: string;
-};
-
-type RoutineFormValues = {
-	subject: string;
-	classNumber: string;
-	roomNumber: string;
-	breakTime: boolean;
-	days: Record<DayKey, DayRoutineState>;
-};
-
-function createInitialValues(): RoutineFormValues {
-	return {
-		subject: "",
-		classNumber: "",
-		roomNumber: "",
-		breakTime: true,
-		days: {
-			mo: {
-				selected: true,
-				enabled: true,
-				startTime: "9:00 AM",
-				endTime: "10:45 AM",
-			},
-			tu: {
-				selected: false,
-				enabled: false,
-				startTime: "",
-				endTime: "",
-			},
-			we: {
-				selected: true,
-				enabled: true,
-				startTime: "9:00 AM",
-				endTime: "8:00 PM",
-			},
-			th: {
-				selected: false,
-				enabled: false,
-				startTime: "",
-				endTime: "",
-			},
-			fr: {
-				selected: false,
-				enabled: false,
-				startTime: "",
-				endTime: "",
-			},
-			sa: {
-				selected: false,
-				enabled: false,
-				startTime: "",
-				endTime: "",
-			},
-			su: {
-				selected: false,
-				enabled: false,
-				startTime: "",
-				endTime: "",
-			},
-		},
-	};
-}
-
-const dayRoutineSchema = z.object({
-	selected: z.boolean(),
-	enabled: z.boolean(),
-	startTime: z.string(),
-	endTime: z.string(),
-});
-
-const routineSchema = z
-	.object({
-		subject: z.string().trim().min(1, "Subject is required"),
-		classNumber: z
-			.string()
-			.trim()
-			.min(1, "Class is required")
-			.regex(/^\d+$/, "Class must be a number"),
-		roomNumber: z
-			.string()
-			.trim()
-			.min(1, "Room is required")
-			.regex(/^\d+$/, "Room must be a number"),
-		breakTime: z.boolean(),
-		days: z.object({
-			mo: dayRoutineSchema,
-			tu: dayRoutineSchema,
-			we: dayRoutineSchema,
-			th: dayRoutineSchema,
-			fr: dayRoutineSchema,
-			sa: dayRoutineSchema,
-			su: dayRoutineSchema,
-		}),
-	})
-	.superRefine((value, context) => {
-		const selectedDays = WEEK_DAYS.filter(
-			({ key }) => value.days[key].selected,
-		);
-
-		if (selectedDays.length === 0) {
-			context.addIssue({
-				code: "custom",
-				path: ["days"],
-				message: "Select at least one class day",
-			});
-		}
-
-		for (const { key, label } of WEEK_DAYS) {
-			const routine = value.days[key];
-
-			if (!routine.selected || !routine.enabled) {
-				continue;
-			}
-
-			if (!routine.startTime.trim()) {
-				context.addIssue({
-					code: "custom",
-					path: ["days", key, "startTime"],
-					message: `Add a start time for ${label}`,
-				});
-			}
-
-			if (!routine.endTime.trim()) {
-				context.addIssue({
-					code: "custom",
-					path: ["days", key, "endTime"],
-					message: `Add an end time for ${label}`,
-				});
-			}
-		}
-	});
-
-function buildErrorMap(error: z.ZodError<RoutineFormValues>) {
-	const nextErrors: Record<string, string> = {};
-
-	for (const issue of error.issues) {
-		const path = issue.path.join(".");
-
-		if (path && !nextErrors[path]) {
-			nextErrors[path] = issue.message;
-		}
-	}
-
-	return nextErrors;
-}
-
-function removeErrorPaths(
-	currentErrors: Record<string, string>,
-	pathsToClear: string[],
-) {
-	const nextErrors = { ...currentErrors };
-
-	for (const key of Object.keys(nextErrors)) {
-		if (
-			pathsToClear.some((path) => key === path || key.startsWith(`${path}.`))
-		) {
-			delete nextErrors[key];
-		}
-	}
-
-	return nextErrors;
-}
-
-function HeroSwitch({
-	isSelected,
-	onSelectedChange,
-	activeColor,
-}: {
-	isSelected: boolean;
-	onSelectedChange: (nextValue: boolean) => void;
-	activeColor: string;
-}) {
-	return (
-		<Switch
-			isSelected={isSelected}
-			onSelectedChange={onSelectedChange}
-			className="h-8 w-13.5"
-			animation={{
-				backgroundColor: {
-					value: ["#dbdbdb", activeColor],
-				},
-			}}
-		>
-			<Switch.Thumb
-				className="size-7"
-				animation={{
-					left: {
-						value: 2,
-						springConfig: {
-							damping: 30,
-							stiffness: 300,
-							mass: 1,
-						},
-					},
-					backgroundColor: {
-						value: ["#ffffff", "#ffffff"],
-					},
-				}}
-			/>
-		</Switch>
-	);
-}
-
-function TimeInputCard({
-	label,
-	value,
-	onChangeText,
-	error,
-}: {
-	label: string;
-	value: string;
-	onChangeText: (nextValue: string) => void;
-	error?: string;
-}) {
-	return (
-		<View className="flex-1 gap-2">
-			<View
-				className={cn(
-					"flex-row items-center rounded-[18px] border bg-white px-4 py-3.5",
-					error ? "border-[#ff5a5f]" : "border-[#ececec]",
-				)}
-				style={CARD_SHADOW}
-			>
-				<Text className="mr-2.5 text-[14px] font-medium text-[#c4c4c4]">
-					{label}
-				</Text>
-
-				<Input
-					value={value}
-					onChangeText={onChangeText}
-					placeholder={label}
-					className="min-h-0 flex-1 border-0 bg-transparent p-0 text-right font-semibold text-[15px] text-[#1a1a1a]"
-					placeholderColorClassName="text-[#d2d2d2]"
-				/>
-			</View>
-
-			{error ? (
-				<Text className="px-1 text-[13px] text-[#ef4444]">{error}</Text>
-			) : null}
-		</View>
-	);
-}
-
-function AddRoutineButton({
-	isDisabled,
-	onPress,
-}: {
-	isDisabled: boolean;
-	onPress: () => void;
-}) {
-	return (
-		<Button
-			variant="outline"
-			onPress={onPress}
-			isDisabled={isDisabled}
-			className="h-15 rounded-[18px] border border-[#545454] bg-transparent"
-		>
-			<Icons className="text-[#111111]" name="add" size={20} />
-			<Button.Label className="ml-2 font-semibold text-[16px] text-[#111111]">
-				Add Another Routine
-			</Button.Label>
-		</Button>
-	);
-}
-
-const CreateRoutine = () => {
+function CreateRoutineScreen() {
 	const [values, setValues] = useState<RoutineFormValues>(() =>
 		createInitialValues(),
 	);
@@ -437,70 +161,21 @@ const CreateRoutine = () => {
 
 	return (
 		<Container className="bg-[#f4f3f0]">
-			<PageHero
-				title="Create Routine"
-				subtitle={`${selectedDayCount === 1 ? "Day" : "Days"} Routine`}
-				className="mt-14"
-			/>
+			<View className="mt-14">
+				<PageHero
+					title="Create Routine"
+					subtitle={`${selectedDayCount} ${selectedDayCount === 1 ? "Day" : "Days"} Routine`}
+				/>
+			</View>
+
 			<View className="px-6 pb-8 pt-6">
-				<View className="mt-11 gap-5">
-					<TextField isInvalid={Boolean(errors.subject)}>
-						<Text className="mb-2.5 font-semibold text-[17px] text-[#111111]">
-							Subject
-						</Text>
-						<Input
-							value={values.subject}
-							onChangeText={(nextValue) =>
-								updateTextValue("subject", nextValue)
-							}
-							placeholder="Physics"
-							className="min-h-17 rounded-[18px] border border-[#e8e8e8] bg-white px-5 text-[17px] text-[#111111]"
-							placeholderColorClassName="text-[#c2c2c2]"
-							style={CARD_SHADOW}
-						/>
-						{errors.subject ? <FieldError>{errors.subject}</FieldError> : null}
-					</TextField>
-
-					<TextField isInvalid={Boolean(errors.classNumber)}>
-						<Text className="mb-2.5 font-semibold text-[17px] text-[#111111]">
-							Class
-						</Text>
-						<Input
-							value={values.classNumber}
-							onChangeText={(nextValue) =>
-								updateTextValue("classNumber", nextValue)
-							}
-							placeholder="Enter class number :"
-							keyboardType="number-pad"
-							className="min-h-17 rounded-[18px] border border-[#e8e8e8] bg-white px-5 text-[17px] text-[#111111]"
-							placeholderColorClassName="text-[#c2c2c2]"
-							style={CARD_SHADOW}
-						/>
-						{errors.classNumber ? (
-							<FieldError>{errors.classNumber}</FieldError>
-						) : null}
-					</TextField>
-
-					<TextField isInvalid={Boolean(errors.roomNumber)}>
-						<Text className="mb-2.5 font-semibold text-[17px] text-[#111111]">
-							Room
-						</Text>
-						<Input
-							value={values.roomNumber}
-							onChangeText={(nextValue) =>
-								updateTextValue("roomNumber", nextValue)
-							}
-							placeholder="Enter room number :"
-							keyboardType="number-pad"
-							className="min-h-17 rounded-[18px] border border-[#e8e8e8] bg-white px-5 text-[17px] text-[#111111]"
-							placeholderColorClassName="text-[#c2c2c2]"
-							style={CARD_SHADOW}
-						/>
-						{errors.roomNumber ? (
-							<FieldError>{errors.roomNumber}</FieldError>
-						) : null}
-					</TextField>
-				</View>
+				<RoutineDetailsSection
+					classNumber={values.classNumber}
+					roomNumber={values.roomNumber}
+					subject={values.subject}
+					errors={errors}
+					onTextChange={updateTextValue}
+				/>
 
 				<ControlField
 					isSelected={values.breakTime}
@@ -524,46 +199,11 @@ const CreateRoutine = () => {
 					/>
 				</ControlField>
 
-				<View className="mt-11">
-					<Text className="font-semibold text-[17px] text-[#111111]">
-						Select Class Time
-					</Text>
-
-					<View className="mt-5 rounded-full bg-[#ebeae6] p-1.5">
-						<View className="flex-row items-center justify-between gap-1">
-							{WEEK_DAYS.map((day) => {
-								const isSelected = values.days[day.key].selected;
-
-								return (
-									<Button
-										key={day.key}
-										variant={isSelected ? "primary" : "ghost"}
-										onPress={() => toggleDaySelection(day.key)}
-										className={cn(
-											"h-11.5 flex-1 rounded-full px-0",
-											isSelected ? "bg-black" : "bg-transparent shadow-none",
-										)}
-									>
-										<Button.Label
-											className={cn(
-												"font-medium text-[15px]",
-												isSelected ? "text-white" : "text-[#808080]",
-											)}
-										>
-											{day.shortLabel}
-										</Button.Label>
-									</Button>
-								);
-							})}
-						</View>
-					</View>
-
-					{errors.days ? (
-						<Text className="mt-3 px-1 text-[13px] text-[#ef4444]">
-							{errors.days}
-						</Text>
-					) : null}
-				</View>
+				<DaySelectorSection
+					errors={errors}
+					selectedDays={values.days}
+					onToggleDay={toggleDaySelection}
+				/>
 
 				<View className="mt-9 gap-8">
 					{selectedDays.map((day) => {
@@ -638,6 +278,140 @@ const CreateRoutine = () => {
 			</View>
 		</Container>
 	);
-};
+}
 
-export default CreateRoutine;
+function RoutineDetailsSection({
+	subject,
+	classNumber,
+	roomNumber,
+	errors,
+	onTextChange,
+}: {
+	subject: string;
+	classNumber: string;
+	roomNumber: string;
+	errors: Record<string, string>;
+	onTextChange: (
+		field: "subject" | "classNumber" | "roomNumber",
+		nextValue: string,
+	) => void;
+}) {
+	return (
+		<View className="mt-11 gap-5">
+			<FormTextField
+				error={errors.subject}
+				label="Subject"
+				placeholder="Physics"
+				value={subject}
+				onChangeText={(nextValue) => onTextChange("subject", nextValue)}
+			/>
+
+			<FormTextField
+				error={errors.classNumber}
+				keyboardType="number-pad"
+				label="Class"
+				placeholder="Enter class number :"
+				value={classNumber}
+				onChangeText={(nextValue) => onTextChange("classNumber", nextValue)}
+			/>
+
+			<FormTextField
+				error={errors.roomNumber}
+				keyboardType="number-pad"
+				label="Room"
+				placeholder="Enter room number :"
+				value={roomNumber}
+				onChangeText={(nextValue) => onTextChange("roomNumber", nextValue)}
+			/>
+		</View>
+	);
+}
+
+function FormTextField({
+	label,
+	value,
+	placeholder,
+	error,
+	keyboardType,
+	onChangeText,
+}: {
+	label: string;
+	value: string;
+	placeholder: string;
+	error?: string;
+	keyboardType?: "default" | "number-pad";
+	onChangeText: (nextValue: string) => void;
+}) {
+	return (
+		<TextField isInvalid={Boolean(error)}>
+			<Text className="mb-2.5 font-semibold text-[17px] text-[#111111]">
+				{label}
+			</Text>
+			<Input
+				value={value}
+				onChangeText={onChangeText}
+				placeholder={placeholder}
+				keyboardType={keyboardType}
+				className="min-h-17 rounded-[18px] border border-[#e8e8e8] bg-white px-5 text-[17px] text-[#111111]"
+				placeholderColorClassName="text-[#c2c2c2]"
+				style={CARD_SHADOW}
+			/>
+			{error ? <FieldError>{error}</FieldError> : null}
+		</TextField>
+	);
+}
+
+function DaySelectorSection({
+	selectedDays,
+	errors,
+	onToggleDay,
+}: {
+	selectedDays: RoutineFormValues["days"];
+	errors: Record<string, string>;
+	onToggleDay: (dayKey: DayKey) => void;
+}) {
+	return (
+		<View className="mt-11">
+			<Text className="font-semibold text-[17px] text-[#111111]">
+				Select Class Time
+			</Text>
+
+			<View className="mt-5 rounded-full bg-[#ebeae6] p-1.5">
+				<View className="flex-row items-center justify-between gap-1">
+					{WEEK_DAYS.map((day) => {
+						const isSelected = selectedDays[day.key].selected;
+
+						return (
+							<Button
+								key={day.key}
+								variant={isSelected ? "primary" : "ghost"}
+								onPress={() => onToggleDay(day.key)}
+								className={cn(
+									"h-11.5 flex-1 rounded-full px-0",
+									isSelected ? "bg-black" : "bg-transparent shadow-none",
+								)}
+							>
+								<Button.Label
+									className={cn(
+										"font-medium text-[15px]",
+										isSelected ? "text-white" : "text-[#808080]",
+									)}
+								>
+									{day.shortLabel}
+								</Button.Label>
+							</Button>
+						);
+					})}
+				</View>
+			</View>
+
+			{errors.days ? (
+				<Text className="mt-3 px-1 text-[13px] text-[#ef4444]">
+					{errors.days}
+				</Text>
+			) : null}
+		</View>
+	);
+}
+
+export default CreateRoutineScreen;
