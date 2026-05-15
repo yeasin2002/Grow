@@ -4,6 +4,8 @@ import {
 	RoutineTimeline,
 	type RoutineTimelineEntry,
 } from "@/feature/routine/routine-timeline";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { router } from "expo-router";
 import { Button } from "heroui-native";
 import { Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -57,9 +59,15 @@ const Routine = () => {
 					title="Routine"
 					subtitle={`${DEMO_ROUTINES.filter((item) => item.type === "class").length} routine`}
 				/>
-				<Button>
-					<Text>Create Routine </Text>
+
+				<Button
+					className="max-w-60  bg-black mx-auto mt-4 rounded-xl"
+					onPress={() => router.push("/routine/create-routine")}
+				>
+					<AntDesign name="plus" size={18} color="white" />
+					<Text className="text-white">Create Routine </Text>
 				</Button>
+
 				<RoutineTimeline entries={DEMO_ROUTINES} />
 			</ScrollView>
 		</Container>

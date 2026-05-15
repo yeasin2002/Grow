@@ -1,3 +1,6 @@
+import { PageHero } from "@/components/shared/index";
+import { Container } from "@/feature/homepage/container";
+import { Icons } from "@/lib";
 import {
 	Button,
 	cn,
@@ -10,9 +13,6 @@ import {
 import { useState } from "react";
 import { Text, View } from "react-native";
 import z from "zod";
-
-import { Container } from "@/feature/homepage/container";
-import { Icons } from "@/lib";
 
 const CARD_SHADOW = {
 	shadowColor: "#000000",
@@ -215,7 +215,7 @@ function HeroSwitch({
 		<Switch
 			isSelected={isSelected}
 			onSelectedChange={onSelectedChange}
-			className="h-8.5 w-14.5"
+			className="h-8 w-13.5"
 			animation={{
 				backgroundColor: {
 					value: ["#dbdbdb", activeColor],
@@ -223,7 +223,7 @@ function HeroSwitch({
 			}}
 		>
 			<Switch.Thumb
-				className="size-[30px]"
+				className="size-7"
 				animation={{
 					left: {
 						value: 2,
@@ -242,39 +242,6 @@ function HeroSwitch({
 	);
 }
 
-function HeaderArtwork() {
-	return (
-		<View className="items-center">
-			<View className="relative h-[118px] w-[150px]">
-				<View
-					className="absolute left-[16px] top-[18px] size-[56px] items-center justify-center rounded-[18px] bg-white"
-					style={CARD_SHADOW}
-				>
-					<Icons className="text-[#c9c9c9]" name="people" size={24} />
-				</View>
-
-				<View
-					className="absolute left-[58px] top-0 size-[56px] rotate-[14deg] items-center justify-center rounded-[18px] bg-white"
-					style={CARD_SHADOW}
-				>
-					<Icons className="text-[#c9c9c9]" name="time-outline" size={24} />
-				</View>
-
-				<View
-					className="absolute left-[78px] top-[12px] size-[56px] rotate-[-14deg] items-center justify-center rounded-[18px] bg-white"
-					style={CARD_SHADOW}
-				>
-					<Icons
-						className="text-[#c9c9c9]"
-						name="clipboard-outline"
-						size={24}
-					/>
-				</View>
-			</View>
-		</View>
-	);
-}
-
 function TimeInputCard({
 	label,
 	value,
@@ -290,12 +257,12 @@ function TimeInputCard({
 		<View className="flex-1 gap-2">
 			<View
 				className={cn(
-					"flex-row items-center rounded-[22px] border bg-white px-5 py-4",
+					"flex-row items-center rounded-[18px] border bg-white px-4 py-3.5",
 					error ? "border-[#ff5a5f]" : "border-[#ececec]",
 				)}
 				style={CARD_SHADOW}
 			>
-				<Text className="mr-3 text-[15px] font-medium text-[#c4c4c4]">
+				<Text className="mr-2.5 text-[14px] font-medium text-[#c4c4c4]">
 					{label}
 				</Text>
 
@@ -303,7 +270,7 @@ function TimeInputCard({
 					value={value}
 					onChangeText={onChangeText}
 					placeholder={label}
-					className="min-h-0 flex-1 border-0 bg-transparent p-0 text-right font-semibold text-[16px] text-[#1a1a1a]"
+					className="min-h-0 flex-1 border-0 bg-transparent p-0 text-right font-semibold text-[15px] text-[#1a1a1a]"
 					placeholderColorClassName="text-[#d2d2d2]"
 				/>
 			</View>
@@ -327,10 +294,10 @@ function AddRoutineButton({
 			variant="outline"
 			onPress={onPress}
 			isDisabled={isDisabled}
-			className="h-[72px] rounded-[22px] border border-[#545454] bg-transparent"
+			className="h-15 rounded-[18px] border border-[#545454] bg-transparent"
 		>
-			<Icons className="text-[#111111]" name="add" size={24} />
-			<Button.Label className="ml-2 font-semibold text-[18px] text-[#111111]">
+			<Icons className="text-[#111111]" name="add" size={20} />
+			<Button.Label className="ml-2 font-semibold text-[16px] text-[#111111]">
 				Add Another Routine
 			</Button.Label>
 		</Button>
@@ -470,22 +437,15 @@ const CreateRoutine = () => {
 
 	return (
 		<Container className="bg-[#f4f3f0]">
-			<View className="px-7 pb-10 pt-8">
-				<View className="items-center pt-10">
-					<HeaderArtwork />
-
-					<Text className="mt-2 text-center font-bold text-[30px] text-[#111111]">
-						Create Routine
-					</Text>
-
-					<Text className="mt-1 text-center font-medium text-[16px] text-[#8f8f8f]">
-						{selectedDayCount} {selectedDayCount === 1 ? "Day" : "Days"} Routine
-					</Text>
-				</View>
-
-				<View className="mt-14 gap-7">
+			<PageHero
+				title="Create Routine"
+				subtitle={`${selectedDayCount === 1 ? "Day" : "Days"} Routine`}
+				className="mt-14"
+			/>
+			<View className="px-6 pb-8 pt-6">
+				<View className="mt-11 gap-5">
 					<TextField isInvalid={Boolean(errors.subject)}>
-						<Text className="mb-3 font-semibold text-[18px] text-[#111111]">
+						<Text className="mb-2.5 font-semibold text-[17px] text-[#111111]">
 							Subject
 						</Text>
 						<Input
@@ -494,7 +454,7 @@ const CreateRoutine = () => {
 								updateTextValue("subject", nextValue)
 							}
 							placeholder="Physics"
-							className="min-h-[92px] rounded-[22px] border border-[#e8e8e8] bg-white px-6 text-[18px] text-[#111111]"
+							className="min-h-17 rounded-[18px] border border-[#e8e8e8] bg-white px-5 text-[17px] text-[#111111]"
 							placeholderColorClassName="text-[#c2c2c2]"
 							style={CARD_SHADOW}
 						/>
@@ -502,7 +462,7 @@ const CreateRoutine = () => {
 					</TextField>
 
 					<TextField isInvalid={Boolean(errors.classNumber)}>
-						<Text className="mb-3 font-semibold text-[18px] text-[#111111]">
+						<Text className="mb-2.5 font-semibold text-[17px] text-[#111111]">
 							Class
 						</Text>
 						<Input
@@ -512,7 +472,7 @@ const CreateRoutine = () => {
 							}
 							placeholder="Enter class number :"
 							keyboardType="number-pad"
-							className="min-h-[92px] rounded-[22px] border border-[#e8e8e8] bg-white px-6 text-[18px] text-[#111111]"
+							className="min-h-17 rounded-[18px] border border-[#e8e8e8] bg-white px-5 text-[17px] text-[#111111]"
 							placeholderColorClassName="text-[#c2c2c2]"
 							style={CARD_SHADOW}
 						/>
@@ -522,7 +482,7 @@ const CreateRoutine = () => {
 					</TextField>
 
 					<TextField isInvalid={Boolean(errors.roomNumber)}>
-						<Text className="mb-3 font-semibold text-[18px] text-[#111111]">
+						<Text className="mb-2.5 font-semibold text-[17px] text-[#111111]">
 							Room
 						</Text>
 						<Input
@@ -532,7 +492,7 @@ const CreateRoutine = () => {
 							}
 							placeholder="Enter room number :"
 							keyboardType="number-pad"
-							className="min-h-[92px] rounded-[22px] border border-[#e8e8e8] bg-white px-6 text-[18px] text-[#111111]"
+							className="min-h-17 rounded-[18px] border border-[#e8e8e8] bg-white px-5 text-[17px] text-[#111111]"
 							placeholderColorClassName="text-[#c2c2c2]"
 							style={CARD_SHADOW}
 						/>
@@ -545,14 +505,14 @@ const CreateRoutine = () => {
 				<ControlField
 					isSelected={values.breakTime}
 					onSelectedChange={updateBreakTime}
-					className="mt-12 flex-row items-center rounded-[24px] bg-[#ebeae6] px-5 py-6"
+					className="mt-10 flex-row items-center rounded-[20px] bg-[#ebeae6] px-4 py-4.5"
 				>
-					<View className="flex-1 flex-row items-center gap-4">
+					<View className="flex-1 flex-row items-center gap-3">
 						<View className="items-center justify-center">
-							<Icons className="text-[#111111]" name="cafe" size={26} />
+							<Icons className="text-[#111111]" name="cafe" size={22} />
 						</View>
 
-						<Text className="font-semibold text-[18px] text-[#111111]">
+						<Text className="font-semibold text-[17px] text-[#111111]">
 							Break Time
 						</Text>
 					</View>
@@ -564,12 +524,12 @@ const CreateRoutine = () => {
 					/>
 				</ControlField>
 
-				<View className="mt-14">
-					<Text className="font-semibold text-[18px] text-[#111111]">
+				<View className="mt-11">
+					<Text className="font-semibold text-[17px] text-[#111111]">
 						Select Class Time
 					</Text>
 
-					<View className="mt-7 rounded-full bg-[#ebeae6] p-2">
+					<View className="mt-5 rounded-full bg-[#ebeae6] p-1.5">
 						<View className="flex-row items-center justify-between gap-1">
 							{WEEK_DAYS.map((day) => {
 								const isSelected = values.days[day.key].selected;
@@ -580,13 +540,13 @@ const CreateRoutine = () => {
 										variant={isSelected ? "primary" : "ghost"}
 										onPress={() => toggleDaySelection(day.key)}
 										className={cn(
-											"h-[54px] flex-1 rounded-full px-0",
+											"h-11.5 flex-1 rounded-full px-0",
 											isSelected ? "bg-black" : "bg-transparent shadow-none",
 										)}
 									>
 										<Button.Label
 											className={cn(
-												"font-medium text-[17px]",
+												"font-medium text-[15px]",
 												isSelected ? "text-white" : "text-[#808080]",
 											)}
 										>
@@ -605,14 +565,14 @@ const CreateRoutine = () => {
 					) : null}
 				</View>
 
-				<View className="mt-11 gap-11">
+				<View className="mt-9 gap-8">
 					{selectedDays.map((day) => {
 						const dayState = values.days[day.key];
 
 						return (
 							<View key={day.key}>
 								<View className="flex-row items-center justify-between">
-									<Text className="font-medium text-[18px] text-[#111111]">
+									<Text className="font-medium text-[17px] text-[#111111]">
 										{day.label}
 									</Text>
 
@@ -625,7 +585,7 @@ const CreateRoutine = () => {
 									/>
 								</View>
 
-								<View className="mt-7 flex-row items-start gap-4">
+								<View className="mt-5 flex-row items-start gap-3">
 									<TimeInputCard
 										label="From"
 										value={dayState.startTime}
@@ -648,10 +608,10 @@ const CreateRoutine = () => {
 										isIconOnly
 										variant="secondary"
 										onPress={() => removeRoutine(day.key)}
-										className="size-[72px] rounded-[22px] border border-[#ececec] bg-white"
+										className="size-14.5 rounded-[18px] border border-[#ececec] bg-white"
 										style={CARD_SHADOW}
 									>
-										<Icons className="text-[#6f6f6f]" name="remove" size={28} />
+										<Icons className="text-[#6f6f6f]" name="remove" size={22} />
 									</Button>
 								</View>
 							</View>
@@ -659,7 +619,7 @@ const CreateRoutine = () => {
 					})}
 				</View>
 
-				<View className="mt-16 gap-6">
+				<View className="mt-12 gap-4">
 					<AddRoutineButton
 						isDisabled={hasEveryDaySelected}
 						onPress={addAnotherRoutine}
@@ -668,9 +628,9 @@ const CreateRoutine = () => {
 					<Button
 						variant="primary"
 						onPress={handleSubmit}
-						className="h-[72px] rounded-[22px] bg-[#111111]"
+						className="h-15 rounded-[18px] bg-[#111111]"
 					>
-						<Button.Label className="font-semibold text-[18px] text-white">
+						<Button.Label className="font-semibold text-[16px] text-white">
 							Create Routine
 						</Button.Label>
 					</Button>
