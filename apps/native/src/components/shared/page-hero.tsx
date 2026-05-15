@@ -6,7 +6,7 @@ type HeroMainProps = {
 	subtitle: string;
 };
 
-export function PageHero({ title, subtitle }: HeroMainProps) {
+export function PageHero({ title = "", subtitle = "" }: HeroMainProps) {
 	return (
 		<View className="items-center">
 			<View className="relative h-27 w-48">
