@@ -36,20 +36,20 @@ export const NAVIGATION_ITEMS = [
 
 export const ACTION_NAVIGATION_ITEMS = [
 	{
-		label: "Notifications",
-		icon: "notifications-outline",
-		route: "/notifications",
-	},
-	{
-		label: "Timer",
-		icon: "timer-outline",
-		route: "/timer",
-	},
-	{
 		label: "Activity",
-		icon: "sparkles-outline",
+		icon: "code-working", // todo: change the icon
 		route: "/activity",
 	},
+	{
+		label: "Calendar",
+		icon: "calendar",
+		route: "/calendar",
+	},
+	// {
+	// 	label: "Activity",
+	// 	icon: "sparkles-outline",
+	// 	route: "/activity",
+	// },
 ] satisfies ReadonlyArray<{
 	label: string;
 	icon: IconName;
