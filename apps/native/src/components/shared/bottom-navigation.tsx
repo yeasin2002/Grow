@@ -1,3 +1,4 @@
+import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { router, usePathname } from "expo-router";
 import { cn } from "heroui-native";
 import { useRef, useState } from "react";
@@ -43,7 +44,10 @@ function isActiveRoute(pathname: string, routes: readonly string[]) {
 	return routes.some((route) => pathname === route);
 }
 
-export function BottomNavigation() {
+export function BottomNavigation({
+	navigation,
+	state,
+}: BottomTabBarProps) {
 	const pathname = usePathname();
 	const insets = useSafeAreaInsets();
 	const [isActionMenuOpen, setIsActionMenuOpen] = useState(false);
@@ -90,6 +94,24 @@ export function BottomNavigation() {
 		router.navigate(route);
 	}
 
+	function handleTabPress(routeName: (typeof NAVIGATION_ITEMS)[number]["tabRouteName"]) {
+		const route = state.routes.find((item) => item.name === routeName);
+
+		if (!route) {
+			return;
+		}
+
+		const event = navigation.emit({
+			canPreventDefault: true,
+			target: route.key,
+			type: "tabPress",
+		});
+
+		if (!event.defaultPrevented) {
+			navigation.navigate(route.name, route.params);
+		}
+	}
+
 	return (
 		<View
 			className="px-3.5"
@@ -112,7 +134,7 @@ export function BottomNavigation() {
 									"h-12 flex-row items-center justify-center overflow-hidden",
 									isActive ? "rounded-full bg-[#2E2E2E] px-4" : "w-12",
 								)}
-								onPress={() => router.navigate(item.route)}
+								onPress={() => handleTabPress(item.tabRouteName)}
 								style={isActive ? activeItemShadow : undefined}
 							>
 								<Icons

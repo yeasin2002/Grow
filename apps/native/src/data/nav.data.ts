@@ -1,8 +1,10 @@
 import type { Icons } from "@/lib";
 import type { Href } from "expo-router";
 import type { ComponentProps } from "react";
+import type { BottomTabNavigationState } from "@react-navigation/bottom-tabs";
 
 type IconName = NonNullable<ComponentProps<typeof Icons>["name"]>;
+type TabRouteName = BottomTabNavigationState["routes"][number]["name"];
 
 export const NAVIGATION_ITEMS = [
 	{
@@ -10,13 +12,15 @@ export const NAVIGATION_ITEMS = [
 		activeIcon: "home",
 		inactiveIcon: "home-outline",
 		route: "/",
-		matchRoutes: ["/"],
+		tabRouteName: "index",
+		matchRoutes: ["/", "/index"],
 	},
 	{
 		label: "Note",
 		activeIcon: "document-text",
 		inactiveIcon: "document-text-outline",
 		route: "/notes",
+		tabRouteName: "notes/index",
 		matchRoutes: ["/notes"],
 	},
 	{
@@ -24,6 +28,7 @@ export const NAVIGATION_ITEMS = [
 		activeIcon: "calendar",
 		inactiveIcon: "calendar-outline",
 		route: "/routine",
+		tabRouteName: "routine/index",
 		matchRoutes: ["/routine"],
 	},
 ] satisfies ReadonlyArray<{
@@ -31,6 +36,7 @@ export const NAVIGATION_ITEMS = [
 	activeIcon: IconName;
 	inactiveIcon: IconName;
 	route: Href;
+	tabRouteName: TabRouteName;
 	matchRoutes: readonly string[];
 }>;
 
