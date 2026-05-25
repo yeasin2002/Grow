@@ -1,6 +1,6 @@
-import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { router, usePathname } from "expo-router";
+import { router, Tabs, usePathname } from "expo-router";
 import { cn } from "heroui-native";
+import type { ComponentProps } from "react";
 import { useRef, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import Animated, {
@@ -40,6 +40,12 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 const AnimatedText = Animated.createAnimatedComponent(Text);
 const AnimatedView = Animated.createAnimatedComponent(View);
 
+type BottomNavigationProps = NonNullable<ComponentProps<typeof Tabs>["tabBar"]> extends (
+	props: infer Props,
+) => React.ReactNode
+	? Props
+	: never;
+
 function isActiveRoute(pathname: string, routes: readonly string[]) {
 	return routes.some((route) => pathname === route);
 }
@@ -47,7 +53,7 @@ function isActiveRoute(pathname: string, routes: readonly string[]) {
 export function BottomNavigation({
 	navigation,
 	state,
-}: BottomTabBarProps) {
+}: BottomNavigationProps) {
 	const pathname = usePathname();
 	const insets = useSafeAreaInsets();
 	const [isActionMenuOpen, setIsActionMenuOpen] = useState(false);

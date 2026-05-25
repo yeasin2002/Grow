@@ -1,10 +1,9 @@
 import type { Icons } from "@/lib";
 import type { Href } from "expo-router";
 import type { ComponentProps } from "react";
-import type { BottomTabNavigationState } from "@react-navigation/bottom-tabs";
 
 type IconName = NonNullable<ComponentProps<typeof Icons>["name"]>;
-type TabRouteName = BottomTabNavigationState["routes"][number]["name"];
+export type TabRouteName = "index" | "notes/index" | "routine/index";
 
 export const NAVIGATION_ITEMS = [
 	{
