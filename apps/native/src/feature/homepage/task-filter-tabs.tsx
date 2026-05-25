@@ -16,7 +16,7 @@ export const TaskFilterTabs = () => {
 		<Tabs
 			value={activeTab}
 			onValueChange={setActiveTab}
-			className="p-1 rounded-full mx-4"
+			className="p-1 rounded-full mx-4 mt-4"
 		>
 			<Tabs.List className="flex-row bg-[#E6E6E6]   rounded-full py-2 px-2 gap-0!">
 				{StatusTabs.map((task) => {

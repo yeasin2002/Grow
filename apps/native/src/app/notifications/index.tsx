@@ -1,8 +1,8 @@
+import { notificationSections } from "@/data/notification.data";
+import { Icons } from "@/lib";
 import { useRouter } from "expo-router";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { notificationSections } from "@/data/notification.data";
-import { Icons } from "@/lib";
 
 export default function NotificationsScreen() {
 	const insets = useSafeAreaInsets();
