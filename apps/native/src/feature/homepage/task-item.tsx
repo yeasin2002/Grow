@@ -1,5 +1,5 @@
-import { Icons } from "@/lib";
 import { Text, View } from "react-native";
+import { Icons } from "@/lib";
 
 interface TaskItemProps {
 	title: string;

@@ -1,5 +1,5 @@
-import { Icons } from "@/lib";
 import { Pressable, Text, View } from "react-native";
+import { Icons } from "@/lib";
 
 interface DateSectionProps {
 	title: string;

@@ -1,6 +1,6 @@
-import { Icons } from "@/lib";
 import { Input } from "heroui-native";
 import { Pressable, View } from "react-native";
+import { Icons } from "@/lib";
 
 export function NotesSearchRow() {
 	return (

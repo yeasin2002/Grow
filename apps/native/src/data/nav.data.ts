@@ -1,6 +1,6 @@
-import type { Icons } from "@/lib";
 import type { Href } from "expo-router";
 import type { ComponentProps } from "react";
+import type { Icons } from "@/lib";
 
 type IconName = NonNullable<ComponentProps<typeof Icons>["name"]>;
 export type TabRouteName = "index" | "notes/index" | "routine/index";
