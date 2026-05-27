@@ -144,10 +144,7 @@ export function FlashCalendar({
 
 	return (
 		<View className="px-3 pt-3">
-			<View
-				className="rounded-[28px] bg-white px-3.5 py-4"
-				style={CARD_SHADOW}
-			>
+			<View className="rounded-[28px] bg-white px-3.5 py-4" style={CARD_SHADOW}>
 				<View className="flex-row items-center justify-between">
 					<Pressable
 						accessibilityLabel="Previous month"
