@@ -7,7 +7,7 @@ type NotificationItem = {
 	time: string;
 };
 
-type NotificationSection = {
+export type NotificationSection = {
 	id: string;
 	title: string;
 	items: NotificationItem[];

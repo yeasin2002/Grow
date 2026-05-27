@@ -1,6 +1,6 @@
-import { Icons } from "@/lib";
 import { cn } from "heroui-native";
 import { Text, View } from "react-native";
+import { Icons } from "@/lib";
 
 type HeroMainProps = {
 	title: string;

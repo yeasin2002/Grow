@@ -1,50 +1,37 @@
 import "@/global.css";
-import { Stack, usePathname } from "expo-router";
-import { View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Stack } from "expo-router";
 
-import { RootWrapper } from "@/components/common";
-import { BottomNavigation } from "@/components/shared";
+import { AppThemeProvider } from "@/contexts/app-theme-context";
+import "@/global.css";
+import { HeroUINativeProvider } from "heroui-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { KeyboardProvider } from "react-native-keyboard-controller";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export const unstable_settings = {
-	initialRouteName: "index",
+	initialRouteName: "(tabs)",
 };
 
 export default function StackLayout() {
-	const pathname = usePathname();
-	const insets = useSafeAreaInsets();
-	const shouldShowBottomNavigation =
-		pathname === "/" ||
-		pathname === "/notes" ||
-		pathname === "/activity" ||
-		pathname === "/routine";
-
 	return (
-		<RootWrapper>
-			<View
-				className="flex-1 bg-background"
-				style={{
-					paddingBottom: shouldShowBottomNavigation
-						? Math.max(insets.bottom + 88, 112)
-						: 0,
-				}}
-			>
-				<Stack
-					screenOptions={{
-						headerShown: false,
-						statusBarStyle: "dark",
-						statusBarTranslucent: true,
-					}}
-				/>
-				{shouldShowBottomNavigation ? (
-					<View
-						pointerEvents="box-none"
-						className="absolute bottom-0 left-0 right-0"
-					>
-						<BottomNavigation />
-					</View>
-				) : null}
-			</View>
-		</RootWrapper>
+		<GestureHandlerRootView style={{ flex: 1 }}>
+			<SafeAreaProvider>
+				<KeyboardProvider>
+					<AppThemeProvider>
+						<HeroUINativeProvider
+							config={{ devInfo: { stylingPrinciples: false } }}
+						>
+							<Stack
+								screenOptions={{
+									headerShown: false,
+									statusBarStyle: "dark",
+									statusBarTranslucent: true,
+								}}
+							/>
+						</HeroUINativeProvider>
+					</AppThemeProvider>
+				</KeyboardProvider>
+			</SafeAreaProvider>
+		</GestureHandlerRootView>
 	);
 }
