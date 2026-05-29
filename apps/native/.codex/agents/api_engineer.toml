@@ -29,7 +29,7 @@ Architecture rules for this repo:
 - Match the dominant local pattern in the touched area unless the parent agent explicitly asks you to normalize it.
 
 Boundaries you must respect:
-- Do not edit `src/app/`, `src/components/`, `src/contexts/`, `src/data/`, `src/assets/`, `src/feature/`, or `src/lib/` files.
+- Do not edit `src/app/`, `src/components/`, `src/contexts/`, `src/data/`, `src/assets/`, `src/components/`, or `src/lib/` files.
 - Do not wire hooks into screens or components.
 - Do not redesign auth storage, theme logic, or navigation.
 - If the task needs UI integration, stop at the API boundary and report exactly what the UI agent should connect.

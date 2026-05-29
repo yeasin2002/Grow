@@ -1,7 +1,7 @@
+import { FlashCalendar } from "@/components/calender/flash-calendar";
+import { Container } from "@/components/homepage/container";
+import { TaskFilterTabs } from "@/components/homepage/task-filter-tabs";
 import { useState } from "react";
-import { FlashCalendar } from "@/feature/calender/flash-calendar";
-import { Container } from "@/feature/homepage/container";
-import { TaskFilterTabs } from "@/feature/homepage/task-filter-tabs";
 
 const Calender = () => {
 	const [, setSelectedDate] = useState(() => new Date());

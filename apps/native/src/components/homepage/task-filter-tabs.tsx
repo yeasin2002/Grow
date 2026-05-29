@@ -1,7 +1,7 @@
+import { TaskList } from "@/components/homepage/task-list";
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "heroui-native";
 import { useState } from "react";
-import { TaskList } from "@/feature/homepage/task-list";
 
 export const TaskFilterTabs = () => {
 	const [activeTab, setActiveTab] = useState("todo");

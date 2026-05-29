@@ -1,12 +1,12 @@
-import { ScrollView, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { PageHero } from "@/components/shared/index";
 import {
 	NotePreview,
 	NotesCard,
 	NotesSearchRow,
 	NotesSection,
-} from "@/feature/notes";
+} from "@/components/notes";
+import { PageHero } from "@/components/shared/index";
+import { ScrollView, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function NotesScreen() {
 	const insets = useSafeAreaInsets();

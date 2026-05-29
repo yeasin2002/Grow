@@ -1,7 +1,7 @@
+import { HeatmapCard } from "@/components/activity/heatmap-card";
+import { RecentActivityRow } from "@/components/activity/recent-activity-row";
 import { ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { HeatmapCard } from "@/feature/activity/heatmap-card";
-import { RecentActivityRow } from "@/feature/activity/recent-activity-row";
 
 const RECENT_ACTIVITY = [
 	{

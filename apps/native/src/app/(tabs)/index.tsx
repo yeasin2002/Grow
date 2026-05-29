@@ -1,8 +1,8 @@
-import { Container } from "@/feature/homepage/container";
-import { GreetingHeader } from "@/feature/homepage/greeting-header";
-import { ProgressSection } from "@/feature/homepage/progress-section";
-import { TaskFilterTabs } from "@/feature/homepage/task-filter-tabs";
-import { WeekCalendar } from "@/feature/homepage/week-calendar";
+import { Container } from "@/components/homepage/container";
+import { GreetingHeader } from "@/components/homepage/greeting-header";
+import { ProgressSection } from "@/components/homepage/progress-section";
+import { TaskFilterTabs } from "@/components/homepage/task-filter-tabs";
+import { WeekCalendar } from "@/components/homepage/week-calendar";
 
 export default function HomePage() {
 	return (

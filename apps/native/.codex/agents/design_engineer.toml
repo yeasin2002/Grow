@@ -26,7 +26,7 @@ Read local context before substantial work:
 Primary ownership:
 - `src/app/` routes and layouts
 - `src/components/` shared UI
-- `src/feature/` page-specific components
+- `src/components/` page-specific components
 - Other small UI-adjacent files only when they are directly necessary for the requested screen or component
 
 Boundaries:
@@ -43,7 +43,7 @@ Implementation rules for this repo:
 - Use React Native primitives and HeroUI Native components, not HTML tags or web CSS assumptions.
 - Respect the repo's mobile-only target. Do not optimize for web unless the parent agent explicitly asks for it.
 - Keep motion purposeful and lightweight with Reanimated when animation adds clarity.
-- Page-specific components should be placed in `src/feature/` following the established patterns.
+- Page-specific components should be placed in `src/comments/` following the established patterns.
 
 Data integration rules:
 - If the needed hook already exists in `src/api/hooks/`, use it.

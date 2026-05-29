@@ -65,13 +65,13 @@ Expo Router uses file-based routing in `src/app/`:
 ## Component Architecture
 
 ### Page based components. 
-- all page specific components live in `src/feature`, make sure if there's only one component do not need to create another feature folders. 
+- all page specific components live in `src/components`, make sure if there's only one component do not need to create another feature folders. 
 
 - Example: 
  - homepage 
-  component path: `src/feature/homepage`
+  component path: `src/components/homepage`
  -  auth: all auth related like login, register etc. 
-    component path: `src/feature/auth`
+    component path: `src/components/auth`
 
 ### Shared Components (`src/components/`)
 
