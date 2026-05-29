@@ -1,11 +1,11 @@
-import { NoteDetailActionBar } from "@/components/note-detail/note-detail-action-bar";
-import { NoteDetailHeader } from "@/components/note-detail/note-detail-header";
-import { RichTextEditor } from "@/components/shared/rich-text-editor";
-import { INITIAL_DEMO_CONTENT } from "@/data/Initial-demo-content";
 import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { NoteDetailActionBar } from "@/components/note-detail/note-detail-action-bar";
+import { NoteDetailHeader } from "@/components/note-detail/note-detail-header";
+import { RichTextEditor } from "@/components/shared/rich-text-editor";
+import { INITIAL_DEMO_CONTENT } from "@/data/Initial-demo-content";
 
 function NoteDetailScreen() {
 	const insets = useSafeAreaInsets();

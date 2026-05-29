@@ -1,13 +1,23 @@
+import {
+	Button,
+	ControlField,
+	cn,
+	FieldError,
+	Input,
+	TextField,
+} from "heroui-native";
+import { useState } from "react";
+import { Text, View } from "react-native";
 import { Container } from "@/components/homepage/container";
 import {
 	buildErrorMap,
 	CARD_SHADOW,
 	createInitialValues,
+	type DayKey,
+	type RoutineFormValues,
 	removeErrorPaths,
 	routineSchema,
 	WEEK_DAYS,
-	type DayKey,
-	type RoutineFormValues,
 } from "@/components/routine/create-routine-form";
 import {
 	AddRoutineButton,
@@ -16,16 +26,6 @@ import {
 } from "@/components/routine/create-routine-parts";
 import { PageHero } from "@/components/shared";
 import { Icons } from "@/lib";
-import {
-	Button,
-	cn,
-	ControlField,
-	FieldError,
-	Input,
-	TextField,
-} from "heroui-native";
-import { useState } from "react";
-import { Text, View } from "react-native";
 
 function CreateRoutineScreen() {
 	const [values, setValues] = useState<RoutineFormValues>(() =>

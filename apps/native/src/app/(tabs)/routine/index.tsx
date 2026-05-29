@@ -1,15 +1,15 @@
-import { Container } from "@/components/homepage/container";
-import {
-	RoutineTimeline,
-	type RoutineTimelineEntry,
-} from "@/components/routine/routine-timeline";
-import { PageHero } from "@/components/shared/index";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { router } from "expo-router";
 import { Button } from "heroui-native";
 import { Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Container } from "@/components/homepage/container";
+import {
+	RoutineTimeline,
+	type RoutineTimelineEntry,
+} from "@/components/routine/routine-timeline";
+import { PageHero } from "@/components/shared/index";
 
 const DEMO_ROUTINES: RoutineTimelineEntry[] = [
 	{
