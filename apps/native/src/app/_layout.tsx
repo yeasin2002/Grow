@@ -1,8 +1,10 @@
 import "@/global.css";
 import { Stack } from "expo-router";
+import { useEffect } from "react";
 
 import { AppThemeProvider } from "@/contexts/app-theme-context";
 import "@/global.css";
+import { runMigrations } from "@/lib/drizzle";
 import { HeroUINativeProvider } from "heroui-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
@@ -13,6 +15,11 @@ export const unstable_settings = {
 };
 
 export default function StackLayout() {
+
+	useEffect(() => {
+		// initialize local DB migrations on app start
+		runMigrations();
+	}, []);
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
 			<SafeAreaProvider>

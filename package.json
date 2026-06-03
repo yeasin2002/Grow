@@ -34,7 +34,8 @@
     "oxfmt": "^0.48.0",
     "oxlint": "^1.63.0",
     "turbo": "^2.9.12",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "babel-plugin-inline-import": "^3.0.0"
   },
   "packageManager": "pnpm@10.33.3"
 }
