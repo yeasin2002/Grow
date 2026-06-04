@@ -26,16 +26,17 @@
   "dependencies": {
     "@grow/env": "workspace:*",
     "dotenv": "catalog:",
+    "drizzle-orm": "^0.45.2",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@grow/config": "workspace:*",
     "@types/node": "catalog:",
+    "babel-plugin-inline-import": "^3.0.0",
     "oxfmt": "^0.48.0",
     "oxlint": "^1.63.0",
     "turbo": "^2.9.12",
-    "typescript": "^6.0.3",
-    "babel-plugin-inline-import": "^3.0.0"
+    "typescript": "^6.0.3"
   },
   "packageManager": "pnpm@10.33.3"
 }

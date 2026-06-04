@@ -1,20 +1,19 @@
+
 import { drizzle } from "drizzle-orm/expo-sqlite";
-import { migrate } from "drizzle-orm/expo-sqlite/migrator";
-import * as SQLite from "expo-sqlite";
-import migrations from "../../drizzle/migrations";
+import { openDatabaseSync } from "expo-sqlite";
 
-// Open or create local DB file
-const _db = SQLite.openDatabase("db.db");
+export const expoDb = openDatabaseSync("database.db");
+export const db = drizzle(expoDb);
 
-export const db = drizzle(_db as any);
+// Drizzle / expo-sqlite integration stub
+// This file intentionally avoids importing `drizzle-orm` or `expo-sqlite`
+// at module-init time to prevent Metro from trying to resolve/watch
+// those packages when they are not fully installed.
 
-export async function runMigrations() {
-	try {
-		await migrate(db, migrations as any);
-		// eslint-disable-next-line no-console
-		console.log("Drizzle migrations applied");
-	} catch (err) {
-		// eslint-disable-next-line no-console
-		console.warn("Failed to run migrations", err);
-	}
-}
+// export async function runMigrations(): Promise<void> {
+// 	// No-op placeholder. If you install and enable Drizzle later,
+// 	// replace this implementation to open the DB and run migrations.
+// 	// Keep this function async so callers can await safely.
+// 	// eslint-disable-next-line no-console
+// 	console.info("Drizzle migrations are disabled in this build.");
+// }

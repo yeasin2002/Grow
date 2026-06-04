@@ -5,11 +5,23 @@ import {
 	NotesSection,
 } from "@/components/notes";
 import { PageHero } from "@/components/shared/index";
+import { notes } from "@/db/schema";
+import { db } from "@/lib/drizzle";
+import { useEffect } from "react";
 import { ScrollView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function NotesScreen() {
 	const insets = useSafeAreaInsets();
+
+	useEffect(() => {
+		const getNotes = async () => {
+			const result = await db.select().from(notes);
+			console.log("🚀 ~ getNotes ~ result:", result);
+		};
+
+		getNotes();
+	}, []);
 
 	return (
 		<View className="flex-1 bg-[#f7f7f5]">
