@@ -3,6 +3,7 @@ import { Image, Pressable, Text, View } from "react-native";
 import taskImage from "@/assets/task-image.jpg";
 
 type NotePreviewProps = {
+	id: string;
 	title: string;
 	preview: string;
 	timestamp: string;
@@ -10,6 +11,7 @@ type NotePreviewProps = {
 };
 
 export function NotePreview({
+	id,
 	title,
 	preview,
 	timestamp,
@@ -21,7 +23,7 @@ export function NotePreview({
 			onPress={() =>
 				router.push({
 					pathname: "/notes/[id]",
-					params: { id: title },
+					params: { id },
 				})
 			}
 		>

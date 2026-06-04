@@ -10,13 +10,13 @@ import { useEffect } from "react";
 import { KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native";
 
 interface RichTextEditorProps {
-	initialContent?: string | object;
+	initialContent?: string | object | null;
 	onChange?: (jsonContent: unknown) => void;
 	placeholder?: string;
 }
 
 // Utility to parse initial content if it's a JSON string or return it directly
-const getParsedInitialContent = (content?: string | object) => {
+const getParsedInitialContent = (content?: string | object | null) => {
 	if (!content) return undefined;
 	if (typeof content === "object") return content;
 	try {

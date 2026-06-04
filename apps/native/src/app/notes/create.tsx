@@ -1,4 +1,5 @@
-import { router, useLocalSearchParams } from "expo-router";
+import { router } from "expo-router";
+import { useRef, useState } from "react";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { NoteDetailActionBar } from "@/components/note-detail/note-detail-action-bar";
@@ -6,26 +7,21 @@ import { NoteDetailHeader } from "@/components/note-detail/note-detail-header";
 import { RichTextEditor } from "@/components/shared/rich-text-editor";
 import { useNotesStore } from "@/store/notes.store";
 
-function NoteDetailScreen() {
+function NoteCreateScreen() {
 	const insets = useSafeAreaInsets();
-	const { id } = useLocalSearchParams<{ id: string }>();
-
-	const note = useNotesStore((s) => s.getNoteById(id));
-	const updateNote = useNotesStore((s) => s.updateNote);
-	const deleteNote = useNotesStore((s) => s.deleteNote);
-
-	if (!note) {
-		// Note not found — go back
-		router.replace("/notes");
-		return null;
-	}
+	const [title, setTitle] = useState("Untitled");
+	const contentRef = useRef<unknown>(null);
+	const addNote = useNotesStore((s) => s.addNote);
+	const savedRef = useRef(false);
 
 	const handleEditorChange = (jsonContent: unknown) => {
-		updateNote(id, { content: jsonContent });
+		contentRef.current = jsonContent;
 	};
 
-	const handleDelete = () => {
-		deleteNote(id);
+	const handleSave = () => {
+		if (savedRef.current) return;
+		savedRef.current = true;
+		addNote(title, contentRef.current);
 		router.back();
 	};
 
@@ -34,17 +30,19 @@ function NoteDetailScreen() {
 			{/* Top Header Section */}
 			<View className="px-4 z-10" style={{ paddingTop: insets.top + 14 }}>
 				<NoteDetailHeader
-					title={note.title}
-					onTitleChange={(title) => updateNote(id, { title })}
-					onDelete={handleDelete}
+					title={title}
+					onTitleChange={setTitle}
+					onSave={handleSave}
+					isCreate
 				/>
 			</View>
 
 			{/* Editor takes up the remaining screen area */}
 			<View className="flex-1 px-4 mt-8 pb-32">
 				<RichTextEditor
-					initialContent={note.content as string | object | null}
+					initialContent={null}
 					onChange={handleEditorChange}
+					placeholder="Start writing your note..."
 				/>
 			</View>
 
@@ -59,4 +57,4 @@ function NoteDetailScreen() {
 	);
 }
 
-export default NoteDetailScreen;
+export default NoteCreateScreen;

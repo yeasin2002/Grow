@@ -1,9 +1,13 @@
 import { router } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { Alert, Pressable, Text, TextInput, View } from "react-native";
 import { Icons } from "@/lib";
 
 type NoteDetailHeaderProps = {
 	title: string;
+	onTitleChange?: (title: string) => void;
+	onDelete?: () => void;
+	onSave?: () => void;
+	isCreate?: boolean;
 };
 
 function HeaderIconButton({
@@ -23,21 +27,54 @@ function HeaderIconButton({
 	);
 }
 
-export function NoteDetailHeader({ title }: NoteDetailHeaderProps) {
+export function NoteDetailHeader({
+	title,
+	onTitleChange,
+	onDelete,
+	onSave,
+	isCreate = false,
+}: NoteDetailHeaderProps) {
+	const handleDelete = () => {
+		Alert.alert("Delete Note", "Are you sure you want to delete this note?", [
+			{ text: "Cancel", style: "cancel" },
+			{ text: "Delete", style: "destructive", onPress: onDelete },
+		]);
+	};
+
+	const rightAction = isCreate ? (
+		<HeaderIconButton icon="checkmark-outline" onPress={onSave} />
+	) : (
+		<HeaderIconButton
+			icon="trash-outline"
+			onPress={onDelete ? handleDelete : undefined}
+		/>
+	);
+
 	return (
 		<View className="flex-row items-center justify-between">
 			<HeaderIconButton icon="chevron-back" onPress={() => router.back()} />
 
-			<View className="mx-3 flex-1 rounded-full bg-white px-5 py-4 shadow-[0_10px_24px_rgba(0,0,0,0.05)]">
-				<Text
-					className="text-center text-[19px] font-semibold tracking-[-0.3px] text-[#111111]"
-					numberOfLines={1}
-				>
-					{title}
-				</Text>
+			<View className="mx-3 flex-1 rounded-full bg-white px-5 py-3 shadow-[0_10px_24px_rgba(0,0,0,0.05)]">
+				{onTitleChange ? (
+					<TextInput
+						value={title}
+						onChangeText={onTitleChange}
+						className="text-center text-[19px] font-semibold tracking-[-0.3px] text-[#111111]"
+						placeholder="Note title"
+						placeholderTextColor="#aaaaaa"
+						returnKeyType="done"
+					/>
+				) : (
+					<Text
+						className="text-center text-[19px] font-semibold tracking-[-0.3px] text-[#111111]"
+						numberOfLines={1}
+					>
+						{title}
+					</Text>
+				)}
 			</View>
 
-			<HeaderIconButton icon="arrow-undo-outline" />
+			{rightAction}
 		</View>
 	);
 }
