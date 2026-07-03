@@ -101,7 +101,7 @@ runOnUI(processData)();
 ### Setup
 
 ```bash
-pnpm add react-native-worklets
+bun add react-native-worklets
 ```
 
 Update `babel.config.js` (replacing the old Reanimated plugin):

@@ -36,35 +36,35 @@ Plan → Routine → Task → Timer → Activity Tracking
 Install dependencies:
 
 ```bash
-pnpm install
+bun install
 ```
 
 Start the dev server:
 
 ```bash
-pnpm dev
+bun dev
 ```
 
 Run on a specific platform:
 
 ```bash
-pnpm ios        # iOS simulator
-pnpm android    # Android emulator
-pnpm web        # Browser
+bun ios        # iOS simulator
+bun android    # Android emulator
+bun web        # Browser
 ```
 
 ## Available Scripts
 
 ```bash
-pnpm dev              # Start Expo dev server (clears cache)
-pnpm start            # Start Expo dev server
-pnpm ios              # Run on iOS simulator
-pnpm android          # Run on Android emulator
-pnpm web              # Run in browser
-pnpm check            # Lint + format check
-pnpm fix              # Lint + format fix
-pnpm check-types      # TypeScript type check (tsc --noEmit)
-pnpm knip             # Dead code / unused exports check
+bun dev              # Start Expo dev server (clears cache)
+bun start            # Start Expo dev server
+bun ios              # Run on iOS simulator
+bun android          # Run on Android emulator
+bun web              # Run in browser
+bun check            # Lint + format check
+bun fix              # Lint + format fix
+bun check-types      # TypeScript type check (tsc --noEmit)
+bun knip             # Dead code / unused exports check
 ```
 
 ## Project Structure

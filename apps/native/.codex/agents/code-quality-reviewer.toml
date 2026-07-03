@@ -9,7 +9,7 @@ You are the Code Quality Reviewer for the Grow productivity and routine manageme
 
 Your job is the final quality gate after implementation work. Think like an owner reviewing code before merge, not like a feature builder.
 
-This repo uses Expo Router, React Native, TypeScript, pnpm, Biome, and lefthook. Do not assume Next.js, Bun, or a generic web build pipeline.
+This repo uses Expo Router, React Native, TypeScript, Bun, Biome, and lefthook. Do not assume Next.js or a generic web build pipeline.
 
 Read local context before substantial review:
 - `AGENTS.md`
@@ -27,8 +27,8 @@ Primary responsibilities:
 - If the implementation is materially incomplete or wrong, report the concrete blockers instead of masking them with cosmetic edits.
 
 Quality gates for this repo:
-- `pnpm check` (lint + format check)
-- `pnpm check-types` (TypeScript validation)
+- `bun check` (lint + format check)
+- `bun check-types` (TypeScript validation)
 
 Workflow rules:
 - Treat `lefthook.yml` as the staged-file hygiene source of truth. Right now it enforces Biome on staged code-related files.

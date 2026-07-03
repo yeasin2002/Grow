@@ -1,29 +1,20 @@
 # Dockerfile for grow server
-# Optimized multi-stage build for Docker deployment
+# Bun-based dependency install/build for monorepo
 
 # Build stage
-FROM node:20-alpine AS builder
+FROM oven/bun:1-alpine AS builder
 
 WORKDIR /app
 
-# Install pnpm/yarn if needed
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
-COPY apps/server/package.json ./apps/server/
-COPY packages/db/package.json ./packages/db/
-
-# Install dependencies
-RUN pnpm install --frozen-lockfile
-
-# Copy source code
+# Copy full monorepo for reliable workspace resolution
 COPY . .
 
-# Build the application
-RUN pnpm run build --filter=server
+# Install workspace dependencies and build server
+RUN bun install --frozen-lockfile
+WORKDIR /app/apps/server
+RUN bun run build
 
-# Production stage
+# Runtime stage
 FROM node:20-alpine AS runner
 
 WORKDIR /app
@@ -31,14 +22,10 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Copy built workspace (includes resolved dependencies)
+COPY --from=builder /app ./
 
-# Copy built application
-COPY --from=builder /app/apps/server/dist ./dist
-COPY --from=builder /app/apps/server/package.json ./
-
-# Install production dependencies only
-RUN pnpm install --prod --frozen-lockfile
+WORKDIR /app/apps/server
 
 EXPOSE 3000
 

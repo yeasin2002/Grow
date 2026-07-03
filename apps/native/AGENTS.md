@@ -289,27 +289,27 @@ const pan = Gesture.Pan()
 ## Build System
 
 - **Metro** - React Native bundler with custom config for Reanimated and Uniwind
-- **pnpm** - Fast, disk-efficient package manager
-- **Monorepo** - Workspace configuration via `pnpm-workspace.yaml`
+- **Bun** - Fast package manager and runtime toolkit
+- **Monorepo** - Workspace configuration via root `package.json` + `bun.lock`
 
 ## Common Commands
 
 ```bash
 # Development
-pnpm dev              # Start dev server with cache cleared
-pnpm start            # Start dev server
-pnpm ios              # Run on iOS simulator
-pnpm android          # Run on Android emulator
-pnpm web              # Run in browser
+bun dev              # Start dev server with cache cleared
+bun start            # Start dev server
+bun ios              # Run on iOS simulator
+bun android          # Run on Android emulator
+bun web              # Run in browser
 
 # Code Quality
-pnpm check            # Run lint + format check
-pnpm fix              # Auto-fix lint + format issues
-pnpm check-types      # TypeScript type checking (tsc --noEmit)
-pnpm knip             # Find dead code and unused exports
+bun check            # Run lint + format check
+bun fix              # Auto-fix lint + format issues
+bun check-types      # TypeScript type checking (tsc --noEmit)
+bun knip             # Find dead code and unused exports
 
 # Build
-pnpm prebuild         # Generate native projects
+bun prebuild         # Generate native projects
 ```
 
 ## Configuration Files

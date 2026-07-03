@@ -74,21 +74,21 @@ The server follows a modular NestJS architecture with:
 
 ```bash
 # Development
-pnpm dev                 # Start development server with hot reload (tsx watch)
+bun dev                 # Start development server with hot reload (tsx watch)
 
 # Building
-pnpm build              # Build for production using tsdown
-pnpm check-types        # Type check without emitting files
-pnpm compile            # Compile to standalone binary with Bun
+bun build              # Build for production using tsdown
+bun check-types        # Type check without emitting files
+bun compile            # Compile to standalone binary with Bun
 
 # Production
-pnpm start              # Run production build (node dist/index.js)
+bun start              # Run production build (node dist/index.js)
 ```
 
 ## Docker Deployment
 
 - Multi-stage Dockerfile optimized for production
-- Uses pnpm for dependency management
+- Uses Bun for dependency management
 - Node 20 Alpine base image
 - Exposes port 3000
 
@@ -98,7 +98,7 @@ pnpm start              # Run production build (node dist/index.js)
 - **CORS**: Configured in bootstrap with origin, methods, and credentials
 - **Port**: Default 3000
 - **Decorators**: Required for NestJS dependency injection
-- **Workspace Protocol**: Uses pnpm workspace packages with `workspace:*`
+- **Workspace Protocol**: Uses workspace packages with `workspace:*`
 
 
 <!-- strcuture -->
@@ -193,7 +193,7 @@ Required environment variables (defined in `.env`):
 ## Build Artifacts
 
 - **dist/** - Production build output (ESM format)
-- **server** - Compiled binary (when using `pnpm compile`)
+- **server** - Compiled binary (when using `bun compile`)
 - **node_modules/** - Installed dependencies
 
 ## Docker Context
@@ -201,4 +201,4 @@ Required environment variables (defined in `.env`):
 The Dockerfile expects to be run from the monorepo root with access to:
 - `apps/server/` - This application
 - `packages/db/` - Database package
-- Workspace lock file (`pnpm-lock.yaml`)
+- Workspace lock file (`bun.lock`)
