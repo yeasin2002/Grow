@@ -1,0 +1,3 @@
+[submodule "apps/native"]
+	path = apps/native
+	url = https://github.com/yeasin2002/grow-native.git
