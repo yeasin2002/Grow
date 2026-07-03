@@ -14,7 +14,7 @@ export const queryClient = new QueryClient({
 });
 
 const clientArgs = {
-  baseUrl: `${env.VITE_SERVER_URL}/rest`,
+  baseUrl: `${env.NEXT_PUBLIC_SERVER_URL}/rest`,
   baseHeaders: {},
   credentials: "include" as const,
   api: tsRestFetchApi,

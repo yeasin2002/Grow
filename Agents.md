@@ -26,7 +26,7 @@ Grow is a full-stack TypeScript application built with a modern monorepo archite
 
 ## Build System & Tooling
 
-- **Package Manager**: pnpm (v10.33.3)
+- **Package Manager**: Bun (v1.3.14)
 - **Monorepo**: Turborepo with workspace configuration
 - **TypeScript**: v6.0.3 (root), v5.9.3 (native app)
 - **Linting**: Oxlint with TypeScript, Unicorn, and OXC plugins
@@ -90,44 +90,44 @@ Grow is a full-stack TypeScript application built with a modern monorepo archite
 ### Development
 ```bash
 # Start all apps
-pnpm run dev
+bun run dev
 
 # Start specific app
-pnpm run dev:web      # Web on port 3001
-pnpm run dev:native   # Mobile with Expo
-pnpm run dev:server   # Backend API on port 3000
+bun run dev:web      # Web on port 3001
+bun run dev:native   # Mobile with Expo
+bun run dev:server   # Backend API on port 3000
 ```
 
 ### Database
 ```bash
-pnpm run db:push      # Push schema changes
-pnpm run db:studio    # Open Drizzle Studio
-pnpm run db:generate  # Generate migrations
-pnpm run db:migrate   # Run migrations
-pnpm run db:start     # Start PostgreSQL (Docker)
-pnpm run db:stop      # Stop PostgreSQL
-pnpm run db:down      # Stop and remove containers
+bun run db:push      # Push schema changes
+bun run db:studio    # Open Drizzle Studio
+bun run db:generate  # Generate migrations
+bun run db:migrate   # Run migrations
+bun run db:start     # Start PostgreSQL (Docker)
+bun run db:stop      # Stop PostgreSQL
+bun run db:down      # Stop and remove containers
 ```
 
 ### Build & Type Checking
 ```bash
-pnpm run build        # Build all apps
-pnpm run check-types  # Type check all workspaces
+bun run build        # Build all apps
+bun run check-types  # Type check all workspaces
 ```
 
 ### Code Quality
 ```bash
-pnpm run check        # Run Oxlint and Oxfmt
+bun run check        # Run Oxlint and Oxfmt
 ```
 
 ### Mobile Specific
 ```bash
 cd apps/native
-pnpm run android      # Run on Android
-pnpm run ios          # Run on iOS
-pnpm run prebuild     # Generate native code
-pnpm run check        # Run Biome checks
-pnpm run fix          # Auto-fix with Biome
+bun run android      # Run on Android
+bun run ios          # Run on iOS
+bun run prebuild     # Generate native code
+bun run check        # Run Biome checks
+bun run fix          # Auto-fix with Biome
 ```
 
 ## Key Dependencies
@@ -145,7 +145,7 @@ pnpm run fix          # Auto-fix with Biome
 
 ## Monorepo Organization
 
-This is a pnpm workspace monorepo managed by Turborepo with the following top-level structure:
+This is a Bun workspace monorepo managed by Turborepo with the following top-level structure:
 
 ```
 grow/
@@ -153,7 +153,7 @@ grow/
 ├── packages/       # Shared packages
 ├── .kiro/          # Kiro configuration and steering
 ├── turbo.json      # Turborepo configuration
-└── pnpm-workspace.yaml
+└── bun.lock
 ```
 
 ## Applications (`apps/`)
@@ -233,7 +233,7 @@ Packages reference each other using workspace protocol:
 
 ### Root Level
 - `turbo.json` - Turborepo task pipeline and caching
-- `pnpm-workspace.yaml` - Workspace packages and catalog dependencies
+- `package.json` (`workspaces` + `catalog`) - Workspace packages and catalog dependencies
 - `.oxlintrc.json` - Oxlint configuration
 - `.oxfmtrc.json` - Oxfmt configuration
 - `.dockerignore` - Docker build exclusions

@@ -32,7 +32,7 @@ Grow is built with a modern technology stack designed for performance, scalabili
 
 ### Development Tools
 - **Monorepo**: Turborepo for efficient multi-package development
-- **Package Manager**: pnpm for fast, disk-efficient dependency management
+- **Package Manager**: Bun for fast dependency management in monorepos
 - **Code Quality**: Oxlint and Oxfmt for consistent code formatting and linting
 - **Testing**: Vitest and MSW for comprehensive testing coverage
 
@@ -42,20 +42,20 @@ Grow is built with a modern technology stack designed for performance, scalabili
 
 ### Getting Started
 
-**Prerequisites**: Node.js 18+, pnpm 10+, Docker (for PostgreSQL)
+**Prerequisites**: Node.js 18+, Bun 1.3+, Docker (for PostgreSQL)
 
 1. **Install dependencies**
    ```bash
-   pnpm install
+   bun install
    ```
 
 2. **Set up the database**
    ```bash
    # Start PostgreSQL container
-   pnpm run db:start
+   bun run db:start
    
    # Push database schema
-   pnpm run db:push
+   bun run db:push
    ```
 
 3. **Configure environment variables**
@@ -65,12 +65,12 @@ Grow is built with a modern technology stack designed for performance, scalabili
 4. **Start development servers**
    ```bash
    # Start all applications
-   pnpm run dev
+   bun run dev
    
    # Or start individually
-   pnpm run dev:web      # Web app on http://localhost:3001
-   pnpm run dev:server   # API server on http://localhost:3000
-   pnpm run dev:native   # Mobile app with Expo
+   bun run dev:web      # Web app on http://localhost:3001
+   bun run dev:server   # API server on http://localhost:3000
+   bun run dev:native   # Mobile app with Expo
    ```
 
 ### Project Structure
@@ -93,17 +93,17 @@ grow/
 
 ```bash
 # Development
-pnpm run dev              # Start all apps
-pnpm run build            # Build all apps
-pnpm run check-types      # Type check all workspaces
+bun run dev              # Start all apps
+bun run build            # Build all apps
+bun run check-types      # Type check all workspaces
 
 # Database
-pnpm run db:studio        # Open Drizzle Studio
-pnpm run db:generate      # Generate migrations
-pnpm run db:migrate       # Run migrations
+bun run db:studio        # Open Drizzle Studio
+bun run db:generate      # Generate migrations
+bun run db:migrate       # Run migrations
 
 # Code Quality
-pnpm run check            # Lint and format code
+bun run check            # Lint and format code
 ```
 
 ### Architecture Highlights

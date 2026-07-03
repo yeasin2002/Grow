@@ -1,14 +1,14 @@
-FROM node:20-alpine AS base
-RUN corepack enable && corepack prepare pnpm@10.17.1 --activate
+FROM oven/bun:1-alpine AS builder
 WORKDIR /app
 
-FROM base AS builder
 COPY . .
-RUN if [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile; else pnpm install; fi
-ENV NEXT_TELEMETRY_DISABLED=1
-RUN pnpm --filter web build
+RUN bun install --frozen-lockfile
 
-FROM base AS runner
+ENV NEXT_TELEMETRY_DISABLED=1
+WORKDIR /app/apps/web
+RUN bun run build
+
+FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1

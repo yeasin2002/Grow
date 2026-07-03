@@ -1,10 +1,31 @@
 {
   "name": "grow",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "catalog": {
+      "@better-auth/expo": "^1.6.10",
+      "@tanstack/react-form": "^1.32.0",
+      "@tanstack/react-query": "^5.100.10",
+      "@ts-rest/core": "^3.52.1",
+      "@ts-rest/react-query": "^3.52.1",
+      "@types/node": "^25.6.2",
+      "@types/react": "^19.2.14",
+      "@vitest/coverage-v8": "^4.1.5",
+      "@vitest/ui": "^4.1.5",
+      "better-auth": "^1.6.10",
+      "dotenv": "^17.4.2",
+      "jsdom": "^29.1.1",
+      "msw": "^2.14.6",
+      "react": "^19.2.6",
+      "react-dom": "^19.2.6",
+      "vitest": "^4.1.5",
+      "zod": "^4.4.3"
+    }
+  },
   "type": "module",
   "scripts": {
     "dev": "turbo dev",
@@ -26,15 +47,17 @@
   "dependencies": {
     "@grow/env": "workspace:*",
     "dotenv": "catalog:",
+    "drizzle-orm": "^0.45.2",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@grow/config": "workspace:*",
     "@types/node": "catalog:",
+    "babel-plugin-inline-import": "^3.0.0",
     "oxfmt": "^0.48.0",
     "oxlint": "^1.63.0",
     "turbo": "^2.9.12",
     "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@10.33.3"
+  "packageManager": "bun@1.3.14"
 }

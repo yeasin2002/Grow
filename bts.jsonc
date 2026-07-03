@@ -23,7 +23,7 @@
   "validation": "zod",
   "forms": "react-hook-form",
   "testing": "vitest",
-  "packageManager": "pnpm",
+  "packageManager": "bun",
   "versionChannel": "stable",
   "dbSetup": "docker",
   "api": "ts-rest",
